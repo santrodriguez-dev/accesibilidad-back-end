@@ -1,7 +1,10 @@
 var express = require('express');
 var router = express.Router();
 
+//Controladores
 const AutenticacionController = require('../controllers').autenticacion;
+
+//Definición de servicios REST
 
 /* GET home page. */
 router.get('/', function (req, res, next) {
@@ -9,17 +12,5 @@ router.get('/', function (req, res, next) {
     title: 'Express'
   });
 });
-
-router.get('/registro', function (req, res) {
-  const f={
-    ff:'dddd',
-    v:'dddd',
-    s:'dddd',
-    a:'dddd',
-  }
-  res.send(f);
-});
-
-router.post('/login', AutenticacionController.iniciarSesion);
 
 module.exports = router;
