@@ -1,12 +1,9 @@
-export type Usuario = {
+export type Paciente = {
     nom_usuario: string;
     contrasena: string;
+    documento: string;
     nombre: string;
     telefono: string;
     direccion: string;
-};
-
-export type Credenciales = {
-    usuario: string,
-    contrasena: string
+    foto: string;
 };

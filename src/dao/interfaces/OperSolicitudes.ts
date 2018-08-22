@@ -1,3 +1,6 @@
+import { Solicitud } from "../../dto";
+
 export interface OperSolicitudes {
-    getAll(): number[];
+    getAll(): Promise<Solicitud[]>;
+    get(id: number): Promise<Solicitud>;
 }
