@@ -4,7 +4,19 @@ import path from "path";
 import cookieParser from "cookie-parser";
 import logger from "morgan";
 import cors from "cors";
+// import socket from 'socket.io'; // socket.io
 import routes from './routes/index'; //ubicacion de rutas raiz
+
+// socket.listen("", function (socket: any) {
+//   console.log('Client connection received');
+// });
+
+// var io = require('socket.io')(http);
+
+// console.log(socket)
+// io.on('connection', function (socket: any) {
+//   console.log('Client connection received');
+// });
 
 // Create Express server
 const app = express();

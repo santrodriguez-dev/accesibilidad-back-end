@@ -6,7 +6,7 @@ import { ClasificacionesModel } from "./Clasificaciones";
 import { PacientesModel } from "./Pacientes";
 
 const attributes: DefineAttributes = {
-    id: { type: Sequelize.NUMERIC, allowNull: false, primaryKey: true, unique: true },
+    id: { type: Sequelize.NUMERIC, autoIncrement: true, allowNull: false, primaryKey: true, unique: true },
     paciente_id: { type: Sequelize.STRING, },
     categoria_id: { type: Sequelize.NUMERIC },
     clasificacion_id: { type: Sequelize.NUMERIC },

@@ -4,9 +4,10 @@ export type Usuario = {
     nombre: string;
     telefono: string;
     direccion: string;
+    foto: string;
 };
 
 export type Credenciales = {
-    usuario: string,
+    nom_usuario: string,
     contrasena: string
 };

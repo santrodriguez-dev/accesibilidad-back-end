@@ -1,9 +1,11 @@
-import { Paciente } from "../../dto/Paciente";
+import { RespuestaServidor, Paciente } from "../../dto";
 
 export interface OperPacientes {
-    getAll(): Promise<Paciente[]>;
+    getAll(): Promise<RespuestaServidor<Paciente[]>>;
+    obtenerPacientesConSolicitudes(): Promise<RespuestaServidor<Paciente[]>>;
     get(id: string): Promise<Paciente | undefined>;
-    create(paciente: Paciente): Promise<boolean>;
-    update(paciente: Paciente): Promise<boolean>;
+    login(paciente: Paciente): Promise<RespuestaServidor<Paciente | null>>;
+    create(paciente: Paciente): Promise<RespuestaServidor<Paciente>>;
+    update(paciente: Paciente): Promise<RespuestaServidor<boolean>>;
     delete(id: string): Promise<boolean>;
 }

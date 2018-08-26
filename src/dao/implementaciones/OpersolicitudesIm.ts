@@ -1,13 +1,40 @@
 import { OperSolicitudes } from "../interfaces/OperSolicitudes";
-import { Solicitud } from "../../dto";
+import { Solicitud, RespuestaServidor } from "../../dto";
 import { SolicitudesModel } from "../../models/Solicitudes";
 import { CategoriasModel } from "../../models/Categorias";
 import { PacientesModel } from "../../models/Pacientes";
 import { ClasificacionesModel } from "../../models/Clasificaciones";
+import { ManejoRespuesta } from "./manejoRespuesta";
 
 export class OperSolicitudesIm implements OperSolicitudes {
 
-    getAll(): Promise<Solicitud[]> {
+    private resp: ManejoRespuesta = new ManejoRespuesta;
+
+    crearSolicitud(solicitud: Solicitud): Promise<RespuestaServidor<boolean>> {
+        return new Promise(resolve => {
+            SolicitudesModel.create(solicitud).then(resBD => {
+                const res = this.resp.respSatisfactoria(true);
+                resolve(res);
+            }).catch(err => {
+                resolve(this.resp.lanzarError(err.message));
+            })
+        });
+    }
+
+    solicitudesPorPaciente(idPaciente: string): Promise<RespuestaServidor<Solicitud[]>> {
+        return new Promise(resolve => {
+            SolicitudesModel
+                .findAll({ where: { paciente_id: idPaciente } })
+                .then(resBD => {
+                    const res = this.resp.respSatisfactoria(resBD)
+                    resolve(res);
+                }).catch(err => {
+                    resolve(this.resp.lanzarError(err.message));
+                })
+        });
+    }
+
+    getAll(): Promise<RespuestaServidor<Solicitud[]>> {
         return new Promise(resolve => {
             SolicitudesModel
                 .findAll({
@@ -15,27 +42,25 @@ export class OperSolicitudesIm implements OperSolicitudes {
                         { model: CategoriasModel, as: "categoria" },
                         { model: ClasificacionesModel, as: "clasificacion" },
                         { model: PacientesModel, as: "paciente" }
-                    ]
+                    ],
+                    order:[['createdAt', 'DESC']]
                 })
                 .then(resBD => {
-                    resolve(resBD)
+                    const res = this.resp.respSatisfactoria(resBD)
+                    resolve(res);
                 }).catch(err => {
-                    console.log(err)
-                    resolve(err.message);
+                    resolve(this.resp.lanzarError(err.message));
                 })
         });
     }
 
-    get(id: number): Promise<Solicitud> {
+    get(id: number): Promise<RespuestaServidor<Solicitud | null>> {
         return new Promise(resolve => {
             SolicitudesModel.findById(id).then(resBD => {
-                if (resBD)
-                    resolve(resBD);
-                else
-                    resolve();
+                const res = this.resp.respSatisfactoria(resBD);
+                resolve(res);
             }).catch(err => {
-                console.log(err)
-                resolve(err.message);
+                resolve(this.resp.lanzarError(err.message));
             })
         });
     }

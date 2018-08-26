@@ -9,7 +9,16 @@ const path_1 = __importDefault(require("path"));
 const cookie_parser_1 = __importDefault(require("cookie-parser"));
 const morgan_1 = __importDefault(require("morgan"));
 const cors_1 = __importDefault(require("cors"));
+// import socket from 'socket.io'; // socket.io
 const index_1 = __importDefault(require("./routes/index")); //ubicacion de rutas raiz
+// socket.listen("", function (socket: any) {
+//   console.log('Client connection received');
+// });
+// var io = require('socket.io')(http);
+// console.log(socket)
+// io.on('connection', function (socket: any) {
+//   console.log('Client connection received');
+// });
 // Create Express server
 const app = express_1.default();
 app.use(cors_1.default());

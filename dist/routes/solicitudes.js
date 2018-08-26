@@ -17,5 +17,17 @@ router.get('/get/:id', async (req, res) => {
     const resBD = await opSolicitudes.get(id);
     res.json(resBD);
 });
+router.get('/paciente/:id', async (req, res) => {
+    const id = req.params.id;
+    const opSolicitudes = new implementaciones_1.OperSolicitudesIm();
+    const resBD = await opSolicitudes.solicitudesPorPaciente(id);
+    res.json(resBD);
+});
+router.post('/crear', async (req, res) => {
+    const solicititud = req.body;
+    const opSolicitudes = new implementaciones_1.OperSolicitudesIm();
+    const resBD = await opSolicitudes.crearSolicitud(solicititud);
+    res.json(resBD);
+});
 exports.routes = router;
 //# sourceMappingURL=solicitudes.js.map

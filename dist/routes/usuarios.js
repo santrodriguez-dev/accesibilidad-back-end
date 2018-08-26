@@ -4,9 +4,13 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
+const OperUsuariosIm_1 = require("../dao/implementaciones/OperUsuariosIm");
 const router = express_1.default.Router();
-exports.getAll = router.get('/', (req, res, next) => {
-    console.log(req.param);
-    res.json({ holamundo: 'terriculas' });
+router.post('/login', async (req, res) => {
+    const crede = req.body;
+    const opUsuarios = new OperUsuariosIm_1.OperUsuariosIm();
+    const resBD = await opUsuarios.login(crede);
+    res.json(resBD);
 });
+exports.routes = router;
 //# sourceMappingURL=usuarios.js.map

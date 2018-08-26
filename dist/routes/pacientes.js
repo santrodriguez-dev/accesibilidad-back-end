@@ -11,6 +11,17 @@ router.get('/getAll', async (req, res, next) => {
     const resBD = await opPacientes.getAll();
     res.json(resBD);
 });
+router.get('/getWithRequests', async (req, res, next) => {
+    const opPacientes = new implementaciones_1.OperPacientesIm();
+    const resBD = await opPacientes.obtenerPacientesConSolicitudes();
+    res.json(resBD);
+});
+router.post('/login', async (req, res, next) => {
+    const paciente = req.body;
+    const opPacientes = new implementaciones_1.OperPacientesIm();
+    const resBD = await opPacientes.login(paciente);
+    res.json(resBD);
+});
 router.get('/get/:id', async (req, res, next) => {
     const id = req.params.id;
     const opPacientes = new implementaciones_1.OperPacientesIm();
