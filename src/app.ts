@@ -4,23 +4,18 @@ import path from "path";
 import cookieParser from "cookie-parser";
 import logger from "morgan";
 import cors from "cors";
-// import socket from 'socket.io'; // socket.io
+// import socketIO from 'socket.io'; // socket.io
 import routes from './routes/index'; //ubicacion de rutas raiz
+// import SocketIO from "socket.io";
 
-// socket.listen("", function (socket: any) {
-//   console.log('Client connection received');
-// });
 
-// var io = require('socket.io')(http);
-
-// console.log(socket)
-// io.on('connection', function (socket: any) {
-//   console.log('Client connection received');
-// });
 
 // Create Express server
 const app = express();
 app.use(cors());
+
+// const io = socketIO.listen(app)
+// io.on("connection", SocketIO)
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));

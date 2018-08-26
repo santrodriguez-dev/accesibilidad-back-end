@@ -9,19 +9,14 @@ const path_1 = __importDefault(require("path"));
 const cookie_parser_1 = __importDefault(require("cookie-parser"));
 const morgan_1 = __importDefault(require("morgan"));
 const cors_1 = __importDefault(require("cors"));
-// import socket from 'socket.io'; // socket.io
+// import socketIO from 'socket.io'; // socket.io
 const index_1 = __importDefault(require("./routes/index")); //ubicacion de rutas raiz
-// socket.listen("", function (socket: any) {
-//   console.log('Client connection received');
-// });
-// var io = require('socket.io')(http);
-// console.log(socket)
-// io.on('connection', function (socket: any) {
-//   console.log('Client connection received');
-// });
+// import SocketIO from "socket.io";
 // Create Express server
 const app = express_1.default();
 app.use(cors_1.default());
+// const io = socketIO.listen(app)
+// io.on("connection", SocketIO)
 // view engine setup
 app.set('views', path_1.default.join(__dirname, 'views'));
 app.set('view engine', 'jade');
