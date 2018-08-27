@@ -10,7 +10,6 @@ class OperSolicitudesIm {
     constructor() {
         this.resp = new manejoRespuesta_1.ManejoRespuesta;
     }
-    // private s: Socket
     crearSolicitud(solicitud) {
         return new Promise(resolve => {
             Solicitudes_1.SolicitudesModel.create(solicitud).then(resBD => {

@@ -10,7 +10,6 @@ import { socketNuevaSolicitud } from "../../routes";
 export class OperSolicitudesIm implements OperSolicitudes {
 
     private resp: ManejoRespuesta = new ManejoRespuesta;
-    // private s: Socket
 
     crearSolicitud(solicitud: Solicitud): Promise<RespuestaServidor<boolean>> {
         return new Promise(resolve => {
