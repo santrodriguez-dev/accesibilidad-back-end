@@ -5,3 +5,6 @@ sequelize model:generate --name clasificaciones --attributes id:number,nombre:st
 sequelize model:generate --name solicitudes --attributes id:number,paciente_id:string,categoria_id:number,clasificacion_id:number
 
 sequelize db:migrate
+
+INSERT INTO clasificaciones (nombre,descripcion,"createdAt","updatedAt")
+VALUES ('Clasificacion A','Descripcion A','03/03/2018','03/03/2018');
