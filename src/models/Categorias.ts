@@ -1,7 +1,6 @@
 import Sequelize, { DefineAttributes } from "sequelize";
 import { sequelize } from ".";
 import { Categoria } from "../dto";
-import { ClasificacionesModel } from "./Clasificaciones";
 
 const attributes: DefineAttributes = {
     id: { type: Sequelize.NUMERIC, allowNull: false, primaryKey: true, unique: true },

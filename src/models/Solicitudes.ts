@@ -10,7 +10,10 @@ const attributes: DefineAttributes = {
     paciente_id: { type: Sequelize.STRING, },
     categoria_id: { type: Sequelize.NUMERIC },
     clasificacion_id: { type: Sequelize.NUMERIC },
-    descripcion: { type: Sequelize.STRING }
+    descripcion: { type: Sequelize.STRING },
+    direccion: { type: Sequelize.STRING },
+    coordLat: { type: Sequelize.STRING },
+    coordLong: { type: Sequelize.STRING }
 }
 
 const solicitudesM = sequelize.define<Solicitud, Solicitud>('solicitudes', attributes);

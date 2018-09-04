@@ -24,7 +24,6 @@ export class OperPacientesIm implements OperPacientes {
     }
 
     login(paciente: Paciente): Promise<RespuestaServidor<Paciente | null>> {
-        // const res: RespuestaServidor<Paciente | null>;
         return new Promise(resolve => {
             PacientesModel.find({ where: { nom_usuario: paciente.nom_usuario, contrasena: paciente.contrasena } })
                 .then(resBD => {
@@ -93,16 +92,21 @@ export class OperPacientesIm implements OperPacientes {
             return err;
         }
     }
-    
-    delete(id: string): Promise<boolean> {
+
+    delete(id: string): Promise<RespuestaServidor<boolean>> {
         return new Promise(resolve => {
             PacientesModel.destroy({
                 where: { nom_usuario: id }
             }).then(resBD => {
-                resolve(true);
+                if (resBD > 0) {
+                    const res = this.resp.respSatisfactoria(true);
+                    resolve(res);
+                } else {
+                    resolve(this.resp.lanzarError('No se ha eliminado el registro'));
+                }
             }).catch(err => {
                 console.log(err)
-                resolve(err.message);
+                resolve(this.resp.lanzarError(err.message));
             })
         });
     }

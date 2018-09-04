@@ -25,6 +25,7 @@ module.exports = {
         }
       },
       clasificacion_id: {
+        allowNull: true,
         type: Sequelize.INTEGER,
         references: {
           model: 'clasificaciones',
@@ -32,6 +33,19 @@ module.exports = {
         }
       },
       descripcion: {
+        allowNull: true,
+        type: Sequelize.STRING,
+      },
+      direccion: {
+        allowNull: true,
+        type: Sequelize.STRING,
+      },
+      coordLat: {
+        allowNull: true,
+        type: Sequelize.STRING,
+      },
+      coordLong: {
+        allowNull: true,
         type: Sequelize.STRING,
       },
       createdAt: {

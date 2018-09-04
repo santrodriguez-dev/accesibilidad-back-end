@@ -3,15 +3,12 @@ import path from "path";
 const router = express.Router();
 import * as socket from "socket.io";
 
-// var socket = require('socket.io')
-
 import * as solicitudesRouter from "./solicitudes";
 import * as usuariosRouter from "./usuarios";
 import * as pacientesRouter from "./pacientes";
 import * as categoriasRouter from "./categorias";
 import * as clasificacionesRouter from "./clasificaciones";
-
-
+import * as seguim_solicitudRouter from "./seguim_solicitud";
 
 export default (app: any) => {
   app.use('/', index);
@@ -20,6 +17,7 @@ export default (app: any) => {
   app.use('/pacientes', pacientesRouter.routes);
   app.use('/categorias', categoriasRouter.routes);
   app.use('/clasificaciones', clasificacionesRouter.routes);
+  app.use('/seguimsolicitud', seguim_solicitudRouter.routes);
 };
 
 const index = router.get('/', (req, res, next) => {
@@ -32,7 +30,6 @@ const index = router.get('/', (req, res, next) => {
   });
   res.sendfile(path.join(__dirname, '..', 'views', 'index.html'));
 });
-
 
 const io = socket.listen(1000);
 

@@ -7,5 +7,5 @@ export interface OperPacientes {
     login(paciente: Paciente): Promise<RespuestaServidor<Paciente | null>>;
     create(paciente: Paciente): Promise<RespuestaServidor<Paciente>>;
     update(paciente: Paciente): Promise<RespuestaServidor<boolean>>;
-    delete(id: string): Promise<boolean>;
+    delete(id: string): Promise<RespuestaServidor<boolean>>;
 }

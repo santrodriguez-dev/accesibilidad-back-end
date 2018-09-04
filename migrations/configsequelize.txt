@@ -3,6 +3,7 @@ sequelize model:generate --name pacientes --attributes nom_usuario:string,contra
 sequelize model:generate --name categorias --attributes id:number,nombre:string,descripcion:string
 sequelize model:generate --name clasificaciones --attributes id:number,nombre:string,descripcion:string
 sequelize model:generate --name solicitudes --attributes id:number,paciente_id:string,categoria_id:number,clasificacion_id:number
+sequelize model:generate --name seguim_solicitud --attributes id:number,solicitud_id:number,diagnostico:string,observacion:string
 
 sequelize db:migrate
 

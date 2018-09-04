@@ -4,8 +4,7 @@
     "password": "1234",
     "database": "accesibilidad",
     "host": "127.0.0.1",
-    "dialect": "postgres",
-    "logging": false
+    "dialect": "postgres"
   },
   "test": {
     "username": "santiago",
@@ -23,6 +22,7 @@
     "dialect": "postgres",
     "dialectOptions": {
       "ssl": true
-    }
+    },
+    "logging": false
   }
 }

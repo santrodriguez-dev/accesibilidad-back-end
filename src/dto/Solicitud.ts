@@ -4,4 +4,7 @@ export type Solicitud = {
     categoria_id: number;
     clasificacion_id: number;
     descripcion: string;
+    direccion: string;
+    coordLat: string;
+    coordLong: string;
 };
