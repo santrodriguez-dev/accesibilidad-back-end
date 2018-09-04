@@ -14,12 +14,12 @@ const express_1 = __importDefault(require("express"));
 const path_1 = __importDefault(require("path"));
 const router = express_1.default.Router();
 const socket = __importStar(require("socket.io"));
-// var socket = require('socket.io')
 const solicitudesRouter = __importStar(require("./solicitudes"));
 const usuariosRouter = __importStar(require("./usuarios"));
 const pacientesRouter = __importStar(require("./pacientes"));
 const categoriasRouter = __importStar(require("./categorias"));
 const clasificacionesRouter = __importStar(require("./clasificaciones"));
+const seguim_solicitudRouter = __importStar(require("./seguim_solicitud"));
 exports.default = (app) => {
     app.use('/', index);
     app.use('/solicitudes', solicitudesRouter.routes);
@@ -27,6 +27,7 @@ exports.default = (app) => {
     app.use('/pacientes', pacientesRouter.routes);
     app.use('/categorias', categoriasRouter.routes);
     app.use('/clasificaciones', clasificacionesRouter.routes);
+    app.use('/seguimsolicitud', seguim_solicitudRouter.routes);
 };
 const index = router.get('/', (req, res, next) => {
     // res.render('index', {
