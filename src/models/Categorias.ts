@@ -1,8 +1,8 @@
-import Sequelize, { DefineAttributes } from "sequelize";
+import Sequelize, { DefineModelAttributes } from "sequelize";
 import { sequelize } from ".";
 import { Categoria } from "../dto";
 
-const attributes: DefineAttributes = {
+const attributes: DefineModelAttributes<Categoria> = {
     id: { type: Sequelize.NUMERIC, allowNull: false, primaryKey: true, unique: true },
     nombre: Sequelize.STRING,
     descripcion: Sequelize.STRING,

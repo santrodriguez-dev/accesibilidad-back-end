@@ -1,11 +1,11 @@
-import Sequelize, { DefineAttributes } from "sequelize";
+import Sequelize, { DefineModelAttributes } from "sequelize";
 import { sequelize } from ".";
 import { Solicitud } from "../dto";
 import { CategoriasModel } from "./Categorias";
 import { ClasificacionesModel } from "./Clasificaciones";
 import { PacientesModel } from "./Pacientes";
 
-const attributes: DefineAttributes = {
+const attributes: DefineModelAttributes<Solicitud> = {
     id: { type: Sequelize.NUMERIC, autoIncrement: true, allowNull: false, primaryKey: true, unique: true },
     paciente_id: { type: Sequelize.STRING, },
     categoria_id: { type: Sequelize.NUMERIC },

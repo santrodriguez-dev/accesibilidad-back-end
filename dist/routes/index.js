@@ -47,4 +47,3 @@ const funSocket = (socket) => {
     });
 };
 exports.socketNuevaSolicitud = io.on('connection', funSocket);
-//# sourceMappingURL=index.js.map

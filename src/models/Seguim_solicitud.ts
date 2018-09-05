@@ -1,9 +1,9 @@
-import Sequelize, { DefineAttributes } from "sequelize";
+import Sequelize, { DefineModelAttributes } from "sequelize";
 import { sequelize } from ".";
 import { Seguim_solicitud } from "../dto";
 import { SolicitudesModel } from "./Solicitudes";
 
-const attributes: DefineAttributes = {
+const attributes: DefineModelAttributes<Seguim_solicitud> = {
     id: { type: Sequelize.NUMERIC, autoIncrement: true, allowNull: false, primaryKey: true, unique: true },
     solicitud_id: { type: Sequelize.STRING, },
     diagnostico: { type: Sequelize.STRING },

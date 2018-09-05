@@ -64,4 +64,3 @@ class OperSolicitudesIm {
     }
 }
 exports.OperSolicitudesIm = OperSolicitudesIm;
-//# sourceMappingURL=OpersolicitudesIm.js.map

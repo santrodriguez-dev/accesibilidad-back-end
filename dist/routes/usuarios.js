@@ -13,4 +13,3 @@ router.post('/login', async (req, res) => {
     res.json(resBD);
 });
 exports.routes = router;
-//# sourceMappingURL=usuarios.js.map
