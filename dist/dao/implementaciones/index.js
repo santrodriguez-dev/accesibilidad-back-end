@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-var OpersolicitudesIm_1 = require("./OpersolicitudesIm");
-exports.OperSolicitudesIm = OpersolicitudesIm_1.OperSolicitudesIm;
+var OperSolicitudesIm_1 = require("./OperSolicitudesIm");
+exports.OperSolicitudesIm = OperSolicitudesIm_1.OperSolicitudesIm;
 var OperPacientesIm_1 = require("./OperPacientesIm");
 exports.OperPacientesIm = OperPacientesIm_1.OperPacientesIm;
 var OperCategoriasIm_1 = require("./OperCategoriasIm");

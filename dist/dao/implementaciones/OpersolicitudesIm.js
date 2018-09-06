@@ -5,7 +5,7 @@ const Categorias_1 = require("../../models/Categorias");
 const Pacientes_1 = require("../../models/Pacientes");
 const Clasificaciones_1 = require("../../models/Clasificaciones");
 const manejoRespuesta_1 = require("./manejoRespuesta");
-const routes_1 = require("../../routes");
+// import { socketNuevaSolicitud } from "../../routes";
 class OperSolicitudesIm {
     constructor() {
         this.resp = new manejoRespuesta_1.ManejoRespuesta;
@@ -14,7 +14,7 @@ class OperSolicitudesIm {
         return new Promise(resolve => {
             Solicitudes_1.SolicitudesModel.create(solicitud).then(resBD => {
                 const res = this.resp.respSatisfactoria(true);
-                routes_1.socketNuevaSolicitud.emit('nuevaSolicitud', resBD);
+                // socketNuevaSolicitud.emit('nuevaSolicitud', resBD);
                 resolve(res);
             }).catch(err => {
                 resolve(this.resp.lanzarError(err.message));

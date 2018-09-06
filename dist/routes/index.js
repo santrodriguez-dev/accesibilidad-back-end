@@ -13,7 +13,6 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const path_1 = __importDefault(require("path"));
 const router = express_1.default.Router();
-const socket = __importStar(require("socket.io"));
 const solicitudesRouter = __importStar(require("./solicitudes"));
 const usuariosRouter = __importStar(require("./usuarios"));
 const pacientesRouter = __importStar(require("./pacientes"));
@@ -30,20 +29,17 @@ exports.default = (app) => {
     app.use('/seguimsolicitud', seguim_solicitudRouter.routes);
 };
 const index = router.get('/', (req, res, next) => {
-    // res.render('index', {
-    //   title: 'Express'
+    // socketNuevaSolicitud.emit('new_message', {
+    //   msj: "Mensaje del socket listener 333",
+    //   status: "Correcto"
     // });
-    exports.socketNuevaSolicitud.emit('new_message', {
-        msj: "Mensaje del socket listener 333",
-        status: "Correcto"
-    });
     res.sendfile(path_1.default.join(__dirname, '..', 'views', 'index.html'));
 });
-const io = socket.listen(1000);
-const funSocket = (socket) => {
-    console.log('++++ Nuevo cliente conectado ++++');
-    socket.on('disconnect', function () {
-        console.log('>>>> Se ha desconectado un cliente');
-    });
-};
-exports.socketNuevaSolicitud = io.on('connection', funSocket);
+// const io = socket.listen(1000);
+// const funSocket = (socket: socket.Socket): void => {
+//   console.log('++++ Nuevo cliente conectado ++++')
+//   socket.on('disconnect', function () {
+//     console.log('>>>> Se ha desconectado un cliente');
+//   });
+// }
+// export const socketNuevaSolicitud = io.on('connection', funSocket);

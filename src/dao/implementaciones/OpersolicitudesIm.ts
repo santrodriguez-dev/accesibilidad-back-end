@@ -5,7 +5,7 @@ import { CategoriasModel } from "../../models/Categorias";
 import { PacientesModel } from "../../models/Pacientes";
 import { ClasificacionesModel } from "../../models/Clasificaciones";
 import { ManejoRespuesta } from "./manejoRespuesta";
-import { socketNuevaSolicitud } from "../../routes";
+// import { socketNuevaSolicitud } from "../../routes";
 
 export class OperSolicitudesIm implements OperSolicitudes {
 
@@ -15,7 +15,7 @@ export class OperSolicitudesIm implements OperSolicitudes {
         return new Promise(resolve => {
             SolicitudesModel.create(solicitud).then(resBD => {
                 const res = this.resp.respSatisfactoria(true);
-                socketNuevaSolicitud.emit('nuevaSolicitud', resBD);
+                // socketNuevaSolicitud.emit('nuevaSolicitud', resBD);
                 resolve(res);
             }).catch(err => {
                 resolve(this.resp.lanzarError(err.message));
