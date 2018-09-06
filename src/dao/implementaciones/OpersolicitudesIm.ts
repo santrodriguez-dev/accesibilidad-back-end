@@ -9,8 +9,9 @@ import { ManejoRespuesta } from "./manejoRespuesta";
 
 export class OperSolicitudesIm implements OperSolicitudes {
 
+    
     private resp: ManejoRespuesta = new ManejoRespuesta;
-
+    
     crearSolicitud(solicitud: Solicitud): Promise<RespuestaServidor<boolean>> {
         return new Promise(resolve => {
             SolicitudesModel.create(solicitud).then(resBD => {

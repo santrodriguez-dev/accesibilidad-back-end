@@ -1,7 +1,7 @@
 import express from "express";
 import path from "path";
 const router = express.Router();
-import * as socket from "socket.io";
+import SocketIO from "socket.io";
 
 import * as solicitudesRouter from "./solicitudes";
 import * as usuariosRouter from "./usuarios";
@@ -28,12 +28,30 @@ const index = router.get('/', (req, res, next) => {
   res.sendfile(path.join(__dirname, '..', 'views', 'index.html'));
 });
 
-// const io = socket.listen(1000);
+// const io = SocketIO.listen(3000);
 
-// const funSocket = (socket: socket.Socket): void => {
+// const funSocket = (socket: SocketIO.Socket) => {
 //   console.log('++++ Nuevo cliente conectado ++++')
 //   socket.on('disconnect', function () {
 //     console.log('>>>> Se ha desconectado un cliente');
 //   });
+
+//   socket.emit('nuevaSolicitud', 'resBD');
+
 // }
-// export const socketNuevaSolicitud = io.on('connection', funSocket);
+
+// function dd(socket: SocketIO.Socket){
+//   console.log('++++ Nuevo cliente conectado ++++')
+//   socket.on('disconnect', function () {
+//     console.log('>>>> Se ha desconectado un cliente');
+//   });
+
+//   socket.emit('nuevaSolicitud', 'resBD');
+
+// }
+
+// // SocketIO.
+
+
+
+// export const socketNuevaSolicitud = io.on('connection', dd);

@@ -35,11 +35,20 @@ const index = router.get('/', (req, res, next) => {
     // });
     res.sendfile(path_1.default.join(__dirname, '..', 'views', 'index.html'));
 });
-// const io = socket.listen(1000);
-// const funSocket = (socket: socket.Socket): void => {
+// const io = SocketIO.listen(3000);
+// const funSocket = (socket: SocketIO.Socket) => {
 //   console.log('++++ Nuevo cliente conectado ++++')
 //   socket.on('disconnect', function () {
 //     console.log('>>>> Se ha desconectado un cliente');
 //   });
+//   socket.emit('nuevaSolicitud', 'resBD');
 // }
-// export const socketNuevaSolicitud = io.on('connection', funSocket);
+// function dd(socket: SocketIO.Socket){
+//   console.log('++++ Nuevo cliente conectado ++++')
+//   socket.on('disconnect', function () {
+//     console.log('>>>> Se ha desconectado un cliente');
+//   });
+//   socket.emit('nuevaSolicitud', 'resBD');
+// }
+// // SocketIO.
+// export const socketNuevaSolicitud = io.on('connection', dd);

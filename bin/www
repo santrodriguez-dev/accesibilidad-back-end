@@ -7,7 +7,8 @@
 var app = require('../dist/app');
 var debug = require('debug')('accesibilidad-back-end:server');
 var http = require('http');
-// var socket = require('socket.io')
+var socket = require('socket.io')
+var misocket = require('../dist/misocket')
 /**
  * Get port from environment and store in Express.
  */
@@ -21,25 +22,11 @@ app.set('port', port);
 
 var server = http.createServer(app);
 
-// const io = socket.listen(1000);
-
-// io.on('connection', function (socket) {
-//   console.log('Conectado al socket')
-
-//   socket.emit('new_message', {
-//     msj: "Mensaje del socket",
-//     status: "Correcto"
-//   });
-
-//   socket.on('event1', function (data) {
-//     console.log(data);
-//   });
-
-
-//   socket.on('disconnect', function () {
-//     console.log('user disconnected');
-//   });
-// });
+/**
+ * Create Socket.io
+ */
+const io = socket.listen(server);
+io.on('connection', misocket);
 
 /**
  * Listen on provided port, on all network interfaces.
