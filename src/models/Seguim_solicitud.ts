@@ -10,7 +10,7 @@ const attributes: DefineModelAttributes<Seguim_solicitud> = {
     observacion: { type: Sequelize.STRING },
 }
 
-const seguim_solicitudM = sequelize.define<Seguim_solicitud, Seguim_solicitud>('seguim_solicitud', attributes);
+const seguim_solicitudM = sequelize.define<Seguim_solicitud, Seguim_solicitud>('seguim_solicitud', attributes, { tableName: 'seguim_solicitud' });
 
 seguim_solicitudM.belongsTo(SolicitudesModel, { foreignKey: "solicitud_id" });
 

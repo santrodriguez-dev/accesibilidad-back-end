@@ -11,7 +11,8 @@
     "password": "1234",
     "database": "accesibilidad",
     "host": "127.0.0.1",
-    "dialect": "postgres"
+    "dialect": "postgres",
+    "logging": false
   },
   "production": {
     "username": "atscwvlynimdsj",
@@ -23,6 +24,6 @@
     "dialectOptions": {
       "ssl": true
     },
-    "logging": false
+    "logging": true
   }
 }
