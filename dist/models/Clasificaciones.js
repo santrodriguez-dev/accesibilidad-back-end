@@ -13,3 +13,4 @@ const attributes = {
 const clasificacionesM = _1.sequelize.define('clasificacione', attributes);
 // clasificacionesM.hasOne(SolicitudesModel, { as: 'clasificacion', foreignKey: 'clasificacion_id' });
 exports.ClasificacionesModel = clasificacionesM;
+//# sourceMappingURL=Clasificaciones.js.map

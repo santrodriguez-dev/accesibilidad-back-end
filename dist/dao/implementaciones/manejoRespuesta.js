@@ -17,3 +17,4 @@ class ManejoRespuesta {
     }
 }
 exports.ManejoRespuesta = ManejoRespuesta;
+//# sourceMappingURL=manejoRespuesta.js.map

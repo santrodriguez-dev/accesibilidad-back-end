@@ -18,3 +18,4 @@ router.get('/get/:id', async (req, res, next) => {
     res.json(resBD);
 });
 exports.routes = router;
+//# sourceMappingURL=categorias.js.map

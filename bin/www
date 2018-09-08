@@ -25,8 +25,8 @@ var server = http.createServer(app);
 /**
  * Create Socket.io
  */
-const io = socket.listen(server);
-io.on('connection', misocket);
+// const io = socket.listen(server);
+// io.on('connection', misocket);
 
 /**
  * Listen on provided port, on all network interfaces.

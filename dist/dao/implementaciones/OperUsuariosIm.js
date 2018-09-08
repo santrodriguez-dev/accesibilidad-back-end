@@ -19,3 +19,4 @@ class OperUsuariosIm {
     }
 }
 exports.OperUsuariosIm = OperUsuariosIm;
+//# sourceMappingURL=OperUsuariosIm.js.map

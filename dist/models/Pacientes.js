@@ -17,3 +17,4 @@ const attributes = {
 const pacientesM = _1.sequelize.define('paciente', attributes);
 // pacientesM.hasMany(SolicitudesModel, { foreignKey: 'paciente_id' });
 exports.PacientesModel = pacientesM;
+//# sourceMappingURL=Pacientes.js.map

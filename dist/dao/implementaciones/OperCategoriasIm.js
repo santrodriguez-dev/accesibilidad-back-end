@@ -27,3 +27,4 @@ class OperCategoriasIm {
     }
 }
 exports.OperCategoriasIm = OperCategoriasIm;
+//# sourceMappingURL=OperCategoriasIm.js.map

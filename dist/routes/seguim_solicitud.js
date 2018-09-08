@@ -31,3 +31,4 @@ router.delete('/eliminarSeguim/:id', async (req, res, next) => {
     res.send(resBD);
 });
 exports.routes = router;
+//# sourceMappingURL=seguim_solicitud.js.map

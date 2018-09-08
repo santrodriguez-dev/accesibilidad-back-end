@@ -5,18 +5,17 @@ import { CategoriasModel } from "../../models/Categorias";
 import { PacientesModel } from "../../models/Pacientes";
 import { ClasificacionesModel } from "../../models/Clasificaciones";
 import { ManejoRespuesta } from "./manejoRespuesta";
-// import { socketNuevaSolicitud } from "../../routes";
+import { socketNuevaSolicitud } from "../../routes";
 
 export class OperSolicitudesIm implements OperSolicitudes {
 
-    
     private resp: ManejoRespuesta = new ManejoRespuesta;
-    
+
     crearSolicitud(solicitud: Solicitud): Promise<RespuestaServidor<boolean>> {
         return new Promise(resolve => {
             SolicitudesModel.create(solicitud).then(resBD => {
                 const res = this.resp.respSatisfactoria(true);
-                // socketNuevaSolicitud.emit('nuevaSolicitud', resBD);
+                socketNuevaSolicitud.emit('nuevaSolicitud', resBD);
                 resolve(res);
             }).catch(err => {
                 resolve(this.resp.lanzarError(err.message));
@@ -49,6 +48,8 @@ export class OperSolicitudesIm implements OperSolicitudes {
                     order: [['createdAt', 'DESC']]
                 })
                 .then(resBD => {
+                    socketNuevaSolicitud.emit('nuevaSolicitud', resBD);
+
                     const res = this.resp.respSatisfactoria(resBD)
                     resolve(res);
                 }).catch(err => {

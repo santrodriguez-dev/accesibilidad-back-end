@@ -47,3 +47,4 @@ router.delete('/delete/:id', async (req, res, next) => {
     res.json(resBD);
 });
 exports.routes = router;
+//# sourceMappingURL=pacientes.js.map

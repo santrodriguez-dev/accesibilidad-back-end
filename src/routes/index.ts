@@ -28,17 +28,15 @@ const index = router.get('/', (req, res, next) => {
   res.sendfile(path.join(__dirname, '..', 'views', 'index.html'));
 });
 
-// const io = SocketIO.listen(3000);
+const io = SocketIO.listen(1000);
 
-// const funSocket = (socket: SocketIO.Socket) => {
-//   console.log('++++ Nuevo cliente conectado ++++')
-//   socket.on('disconnect', function () {
-//     console.log('>>>> Se ha desconectado un cliente');
-//   });
+const funSocket = (socket: SocketIO.Socket) => {
+  console.log('++++ Nuevo cliente conectado ++++')
+  socket.on('disconnect', function () {
+    console.log('>>>> Se ha desconectado un cliente');
+  });
 
-//   socket.emit('nuevaSolicitud', 'resBD');
-
-// }
+}
 
 // function dd(socket: SocketIO.Socket){
 //   console.log('++++ Nuevo cliente conectado ++++')
@@ -54,4 +52,4 @@ const index = router.get('/', (req, res, next) => {
 
 
 
-// export const socketNuevaSolicitud = io.on('connection', dd);
+export const socketNuevaSolicitud = io.on('connection', funSocket);

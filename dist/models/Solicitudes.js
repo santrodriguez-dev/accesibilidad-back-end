@@ -24,3 +24,4 @@ solicitudesM.belongsTo(Categorias_1.CategoriasModel, { foreignKey: "categoria_id
 solicitudesM.belongsTo(Clasificaciones_1.ClasificacionesModel, { foreignKey: "clasificacion_id", as: "clasificacion" });
 solicitudesM.belongsTo(Pacientes_1.PacientesModel, { foreignKey: "paciente_id" });
 exports.SolicitudesModel = solicitudesM;
+//# sourceMappingURL=Solicitudes.js.map

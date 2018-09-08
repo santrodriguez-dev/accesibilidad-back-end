@@ -1,61 +1,18 @@
-import SocketIO from "socket.io";
+import { Socket } from "socket.io";
+import { BehaviorSubject } from 'rxjs';
 
-var funcion = null;
+const observableSocket = new BehaviorSubject<any>('');
 
-
-import { Observable, BehaviorSubject } from 'rxjs';
-
-const h = new Observable(ob => {
-  ob.next('')
-})
-
-const cambioCargando = new BehaviorSubject<boolean>(false);
-
-
-
-const funSocket = (socket: SocketIO.Socket) => {
-  console.log('++++ Nuevo cliente conectado2 ++++')
+const funSocket = (socket: Socket) => {
+  console.log('++++ Nuevo cliente conectado ++++')
   socket.on('disconnect', function () {
     console.log('>>>> Se ha desconectado un cliente2');
   });
 
-
-  h.subscribe(res => {
-    socket.emit('nuevaSolicitud', ['resBD']);
-
+  observableSocket.subscribe(observ => {
+    socket.emit('nuevaSolicitud', 'ResBD Observable' + observ);
   })
-  // socket.emit('nuevaSolicitud', 'resBD');
-
-  funcion = function Ejecutar(data: any) {
-    //Codigo funcion
-  }
 }
 
-// if(funcion){
-//   funcion('dato');
-// }
-
-var misocket: SocketIO.Socket;
-
-
-// var socketDin: SocketIO.Socket;
-
-// socketDin.emit('', '')
-
-
-// function dd(socket: SocketIO.Socket) {
-//   console.log('++++ Nuevo cliente conectado1 ++++')
-//   socket.on('disconnect', function () {
-//     console.log('>>>> Se ha desconectado un cliente1');
-//   });
-
-//   socket = socketDin;
-
-
-
-//   socket.emit('nuevaSolicitud', function () {
-//     console.log('resbd');
-//   });
-// }
-
+export const ob = observableSocket;
 module.exports = funSocket;

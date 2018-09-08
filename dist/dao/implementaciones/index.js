@@ -8,3 +8,4 @@ var OperCategoriasIm_1 = require("./OperCategoriasIm");
 exports.OperCategoriasIm = OperCategoriasIm_1.OperCategoriasIm;
 var OperClasificacionesIm_1 = require("./OperClasificacionesIm");
 exports.OperClasificacionesIm = OperClasificacionesIm_1.OperClasificacionesIm;
+//# sourceMappingURL=index.js.map

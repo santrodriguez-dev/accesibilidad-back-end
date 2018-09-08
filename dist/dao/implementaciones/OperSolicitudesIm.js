@@ -5,7 +5,7 @@ const Categorias_1 = require("../../models/Categorias");
 const Pacientes_1 = require("../../models/Pacientes");
 const Clasificaciones_1 = require("../../models/Clasificaciones");
 const manejoRespuesta_1 = require("./manejoRespuesta");
-// import { socketNuevaSolicitud } from "../../routes";
+const routes_1 = require("../../routes");
 class OperSolicitudesIm {
     constructor() {
         this.resp = new manejoRespuesta_1.ManejoRespuesta;
@@ -14,7 +14,7 @@ class OperSolicitudesIm {
         return new Promise(resolve => {
             Solicitudes_1.SolicitudesModel.create(solicitud).then(resBD => {
                 const res = this.resp.respSatisfactoria(true);
-                // socketNuevaSolicitud.emit('nuevaSolicitud', resBD);
+                routes_1.socketNuevaSolicitud.emit('nuevaSolicitud', resBD);
                 resolve(res);
             }).catch(err => {
                 resolve(this.resp.lanzarError(err.message));
@@ -45,6 +45,7 @@ class OperSolicitudesIm {
                 order: [['createdAt', 'DESC']]
             })
                 .then(resBD => {
+                routes_1.socketNuevaSolicitud.emit('nuevaSolicitud', resBD);
                 const res = this.resp.respSatisfactoria(resBD);
                 resolve(res);
             }).catch(err => {
@@ -64,3 +65,4 @@ class OperSolicitudesIm {
     }
 }
 exports.OperSolicitudesIm = OperSolicitudesIm;
+//# sourceMappingURL=OperSolicitudesIm.js.map

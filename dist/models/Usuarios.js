@@ -14,3 +14,4 @@ const attributes = {
     foto: sequelize_1.default.STRING,
 };
 exports.UsuariosModel = _1.sequelize.define('usuario', attributes);
+//# sourceMappingURL=Usuarios.js.map

@@ -106,3 +106,4 @@ class OperPacientesIm {
     }
 }
 exports.OperPacientesIm = OperPacientesIm;
+//# sourceMappingURL=OperPacientesIm.js.map

@@ -67,3 +67,4 @@ class OperSeguim_solicitudIm {
     }
 }
 exports.OperSeguim_solicitudIm = OperSeguim_solicitudIm;
+//# sourceMappingURL=OperSeguim_solicitudIm.js.map

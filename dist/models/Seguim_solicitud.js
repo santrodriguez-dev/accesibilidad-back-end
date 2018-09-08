@@ -15,3 +15,4 @@ const attributes = {
 const seguim_solicitudM = _1.sequelize.define('seguim_solicitud', attributes, { tableName: 'seguim_solicitud' });
 seguim_solicitudM.belongsTo(Solicitudes_1.SolicitudesModel, { foreignKey: "solicitud_id" });
 exports.Seguim_solicitudModel = seguim_solicitudM;
+//# sourceMappingURL=Seguim_solicitud.js.map

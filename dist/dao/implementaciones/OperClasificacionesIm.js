@@ -27,3 +27,4 @@ class OperClasificacionesIm {
     }
 }
 exports.OperClasificacionesIm = OperClasificacionesIm;
+//# sourceMappingURL=OperClasificacionesIm.js.map

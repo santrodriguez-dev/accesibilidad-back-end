@@ -30,3 +30,4 @@ router.post('/crear', async (req, res) => {
     res.json(resBD);
 });
 exports.routes = router;
+//# sourceMappingURL=solicitudes.js.map
