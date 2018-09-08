@@ -36,7 +36,7 @@ const index = router.get('/', (req, res, next) => {
     // });
     res.sendfile(path_1.default.join(__dirname, '..', 'views', 'index.html'));
 });
-const io = socket_io_1.default.listen(1000);
+const io = socket_io_1.default.listen(3001);
 const funSocket = (socket) => {
     console.log('++++ Nuevo cliente conectado ++++');
     socket.on('disconnect', function () {
