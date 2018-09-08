@@ -28,10 +28,8 @@ const index = router.get('/', (req, res, next) => {
   res.sendfile(path.join(__dirname, '..', 'views', 'index.html'));
 });
 
-const io = SocketIO.listen(3001, {
-  origins: '*:*',
-  transports: ['websocket', 'htmlfile', 'xhr-polling', 'jsonp-polling', 'polling']
-});
+const io = SocketIO.listen(3001);
+io.origins()
 
 const funSocket = (socket: SocketIO.Socket) => {
   console.log('++++ Nuevo cliente conectado ++++')

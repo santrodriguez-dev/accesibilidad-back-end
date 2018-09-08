@@ -36,10 +36,8 @@ const index = router.get('/', (req, res, next) => {
     // });
     res.sendfile(path_1.default.join(__dirname, '..', 'views', 'index.html'));
 });
-const io = socket_io_1.default.listen(3001, {
-    origins: '*:*',
-    transports: ['websocket', 'htmlfile', 'xhr-polling', 'jsonp-polling', 'polling']
-});
+const io = socket_io_1.default.listen(3001);
+io.origins();
 const funSocket = (socket) => {
     console.log('++++ Nuevo cliente conectado ++++');
     socket.on('disconnect', function () {
