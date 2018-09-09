@@ -38,8 +38,7 @@ class OperPacientesIm {
                 const res = this.resp.respSatisfactoria(resBD);
                 resolve(res);
             }).catch(err => {
-                console.log(err);
-                resolve(err.message);
+                resolve(this.resp.lanzarError(err.message));
             });
         });
     }
@@ -50,13 +49,10 @@ class OperPacientesIm {
                     { model: Solicitudes_1.SolicitudesModel, as: "solicitudes" }
                 ]
             }).then(resBD => {
-                if (resBD)
-                    resolve(resBD);
-                else
-                    resolve();
+                const res = this.resp.respSatisfactoria(resBD);
+                resolve(res);
             }).catch(err => {
-                console.log(err);
-                resolve(err.message);
+                resolve(this.resp.lanzarError(err.message));
             });
         });
     }

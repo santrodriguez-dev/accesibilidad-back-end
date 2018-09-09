@@ -41,26 +41,22 @@ export class OperPacientesIm implements OperPacientes {
                 const res = this.resp.respSatisfactoria(resBD);
                 resolve(res);
             }).catch(err => {
-                console.log(err)
-                resolve(err.message);
+                resolve(this.resp.lanzarError(err.message))
             })
         });
     }
 
-    get(id: string): Promise<Paciente> {
+    get(id: string): Promise<RespuestaServidor<Paciente | null>> {
         return new Promise(resolve => {
             PacientesModel.findById(id, {
                 include: [
                     { model: SolicitudesModel, as: "solicitudes" }
                 ]
             }).then(resBD => {
-                if (resBD)
-                    resolve(resBD);
-                else
-                    resolve();
+                const res = this.resp.respSatisfactoria(resBD);
+                resolve(res);
             }).catch(err => {
-                console.log(err)
-                resolve(err.message);
+                resolve(this.resp.lanzarError(err.message))
             })
         });
     }

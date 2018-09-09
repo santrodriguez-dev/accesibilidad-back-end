@@ -36,21 +36,14 @@ const index = router.get('/', (req, res, next) => {
     // });
     res.sendfile(path_1.default.join(__dirname, '..', 'views', 'index.html'));
 });
-const io = socket_io_1.default.listen(3001);
-io.origins();
+const io = socket_io_1.default.listen(3001, {
+    origins: '*:*',
+});
 const funSocket = (socket) => {
     console.log('++++ Nuevo cliente conectado ++++');
     socket.on('disconnect', function () {
         console.log('>>>> Se ha desconectado un cliente');
     });
 };
-// function dd(socket: SocketIO.Socket){
-//   console.log('++++ Nuevo cliente conectado ++++')
-//   socket.on('disconnect', function () {
-//     console.log('>>>> Se ha desconectado un cliente');
-//   });
-//   socket.emit('nuevaSolicitud', 'resBD');
-// }
-// // SocketIO.
 exports.socketNuevaSolicitud = io.on('connection', funSocket);
 //# sourceMappingURL=index.js.map
