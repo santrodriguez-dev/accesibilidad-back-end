@@ -1,6 +1,7 @@
 import Sequelize, { DefineModelAttributes } from "sequelize";
 import { sequelize } from ".";
 import { Paciente } from "../dto/Paciente";
+import { SolicitudesModel } from "./Solicitudes";
 
 const attributes: DefineModelAttributes<Paciente> = {
     nom_usuario: { type: Sequelize.STRING, allowNull: false, primaryKey: true, unique: true },
@@ -13,6 +14,6 @@ const attributes: DefineModelAttributes<Paciente> = {
 }
 const pacientesM = sequelize.define<Paciente, Paciente>('paciente', attributes)
 
-// pacientesM.hasMany(SolicitudesModel, { foreignKey: 'paciente_id' });
+// pacientesM.hasMany(SolicitudesModel, { as: 'solicitudes' });
 
 export const PacientesModel = pacientesM;

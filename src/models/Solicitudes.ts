@@ -12,8 +12,8 @@ const attributes: DefineModelAttributes<Solicitud> = {
     clasificacion_id: { type: Sequelize.NUMERIC },
     descripcion: { type: Sequelize.STRING },
     direccion: { type: Sequelize.STRING },
-    coordLat: { type: Sequelize.STRING },
-    coordLong: { type: Sequelize.STRING }
+    coordLat: { type: Sequelize.FLOAT },
+    coordLong: { type: Sequelize.FLOAT }
 }
 
 const solicitudesM = sequelize.define<Solicitud, Solicitud>('solicitudes', attributes);

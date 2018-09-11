@@ -15,8 +15,8 @@ const attributes = {
     clasificacion_id: { type: sequelize_1.default.NUMERIC },
     descripcion: { type: sequelize_1.default.STRING },
     direccion: { type: sequelize_1.default.STRING },
-    coordLat: { type: sequelize_1.default.STRING },
-    coordLong: { type: sequelize_1.default.STRING }
+    coordLat: { type: sequelize_1.default.FLOAT },
+    coordLong: { type: sequelize_1.default.FLOAT }
 };
 const solicitudesM = _1.sequelize.define('solicitudes', attributes);
 Pacientes_1.PacientesModel.hasMany(solicitudesM, { foreignKey: 'paciente_id', sourceKey: 'nom_usuario' });

@@ -60,7 +60,11 @@ export class OperSolicitudesIm implements OperSolicitudes {
 
     get(id: number): Promise<RespuestaServidor<Solicitud | null>> {
         return new Promise(resolve => {
-            SolicitudesModel.findById(id).then(resBD => {
+            SolicitudesModel.findById(id, {
+                include: [
+                    { model: PacientesModel, as: "paciente" }
+                ]
+            }).then(resBD => {
                 const res = this.resp.respSatisfactoria(resBD);
                 resolve(res);
             }).catch(err => {

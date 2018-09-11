@@ -55,7 +55,11 @@ class OperSolicitudesIm {
     }
     get(id) {
         return new Promise(resolve => {
-            Solicitudes_1.SolicitudesModel.findById(id).then(resBD => {
+            Solicitudes_1.SolicitudesModel.findById(id, {
+                include: [
+                    { model: Pacientes_1.PacientesModel, as: "paciente" }
+                ]
+            }).then(resBD => {
                 const res = this.resp.respSatisfactoria(resBD);
                 resolve(res);
             }).catch(err => {

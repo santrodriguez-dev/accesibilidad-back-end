@@ -15,6 +15,6 @@ const attributes = {
     foto: sequelize_1.default.STRING,
 };
 const pacientesM = _1.sequelize.define('paciente', attributes);
-// pacientesM.hasMany(SolicitudesModel, { foreignKey: 'paciente_id' });
+// pacientesM.hasMany(SolicitudesModel, { as: 'solicitudes' });
 exports.PacientesModel = pacientesM;
 //# sourceMappingURL=Pacientes.js.map
