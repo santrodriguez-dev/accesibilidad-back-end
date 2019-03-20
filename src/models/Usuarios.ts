@@ -10,4 +10,4 @@ const attributes: DefineModelAttributes<Usuario> = {
     direccion: Sequelize.STRING,
     foto: Sequelize.STRING,
 }
-export const UsuariosModel = sequelize.define<Usuario, Usuario>('usuario', attributes)
+export const UsuariosModel = sequelize.define('usuario', attributes)

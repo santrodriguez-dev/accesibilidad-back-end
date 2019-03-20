@@ -6,10 +6,10 @@ import { ClasificacionesModel } from "./Clasificaciones";
 import { PacientesModel } from "./Pacientes";
 
 const attributes: DefineModelAttributes<Solicitud> = {
-    id: { type: Sequelize.NUMERIC, autoIncrement: true, allowNull: false, primaryKey: true, unique: true },
+    id: { type: Sequelize.NUMBER, autoIncrement: true, allowNull: false, primaryKey: true, unique: true },
     paciente_id: { type: Sequelize.STRING, },
-    categoria_id: { type: Sequelize.NUMERIC },
-    clasificacion_id: { type: Sequelize.NUMERIC },
+    categoria_id: { type: Sequelize.NUMBER },
+    clasificacion_id: { type: Sequelize.NUMBER },
     descripcion: { type: Sequelize.STRING },
     direccion: { type: Sequelize.STRING },
     coordLat: { type: Sequelize.FLOAT },

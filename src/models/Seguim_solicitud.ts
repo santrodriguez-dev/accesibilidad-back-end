@@ -4,7 +4,7 @@ import { Seguim_solicitud } from "../dto";
 import { SolicitudesModel } from "./Solicitudes";
 
 const attributes: DefineModelAttributes<Seguim_solicitud> = {
-    id: { type: Sequelize.NUMERIC, autoIncrement: true, allowNull: false, primaryKey: true, unique: true },
+    id: { type: Sequelize.NUMBER, autoIncrement: true, allowNull: false, primaryKey: true, unique: true },
     solicitud_id: { type: Sequelize.STRING, },
     diagnostico: { type: Sequelize.STRING },
     observacion: { type: Sequelize.STRING },

@@ -3,6 +3,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+// import { Sequelize } from "sequelize";
 const sequelize_1 = __importDefault(require("sequelize"));
 const env = process.env.NODE_ENV || "production";
 const config = require(__dirname + "./../../config/config.json")[env];

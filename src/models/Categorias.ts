@@ -3,7 +3,7 @@ import { sequelize } from ".";
 import { Categoria } from "../dto";
 
 const attributes: DefineModelAttributes<Categoria> = {
-    id: { type: Sequelize.NUMERIC, allowNull: false, primaryKey: true, unique: true },
+    id: { type: Sequelize.NUMBER, allowNull: false, primaryKey: true, unique: true },
     nombre: Sequelize.STRING,
     descripcion: Sequelize.STRING,
 }

@@ -9,10 +9,10 @@ const Categorias_1 = require("./Categorias");
 const Clasificaciones_1 = require("./Clasificaciones");
 const Pacientes_1 = require("./Pacientes");
 const attributes = {
-    id: { type: sequelize_1.default.NUMERIC, autoIncrement: true, allowNull: false, primaryKey: true, unique: true },
+    id: { type: sequelize_1.default.NUMBER, autoIncrement: true, allowNull: false, primaryKey: true, unique: true },
     paciente_id: { type: sequelize_1.default.STRING, },
-    categoria_id: { type: sequelize_1.default.NUMERIC },
-    clasificacion_id: { type: sequelize_1.default.NUMERIC },
+    categoria_id: { type: sequelize_1.default.NUMBER },
+    clasificacion_id: { type: sequelize_1.default.NUMBER },
     descripcion: { type: sequelize_1.default.STRING },
     direccion: { type: sequelize_1.default.STRING },
     coordLat: { type: sequelize_1.default.FLOAT },

@@ -1,4 +1,4 @@
-export type Paciente = {
+export interface Paciente {
     nom_usuario: string;
     contrasena: string;
     documento: string;

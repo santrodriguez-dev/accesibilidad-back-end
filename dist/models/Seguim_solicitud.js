@@ -7,7 +7,7 @@ const sequelize_1 = __importDefault(require("sequelize"));
 const _1 = require(".");
 const Solicitudes_1 = require("./Solicitudes");
 const attributes = {
-    id: { type: sequelize_1.default.NUMERIC, autoIncrement: true, allowNull: false, primaryKey: true, unique: true },
+    id: { type: sequelize_1.default.NUMBER, autoIncrement: true, allowNull: false, primaryKey: true, unique: true },
     solicitud_id: { type: sequelize_1.default.STRING, },
     diagnostico: { type: sequelize_1.default.STRING },
     observacion: { type: sequelize_1.default.STRING },
