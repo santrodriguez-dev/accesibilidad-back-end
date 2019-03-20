@@ -1,16 +1,17 @@
 import { OperPacientes } from "../interfaces/OperPacientes";
 import { Paciente, RespuestaServidor } from "../../dto";
-import { PacientesModel } from "../../models/Pacientes";
+import { CommentFactory } from "../../models/Pacientes";
 import { SolicitudesModel } from "../../models/Solicitudes";
 import { ManejoRespuesta } from "./manejoRespuesta";
 
 export class OperPacientesIm implements OperPacientes {
 
     private resp: ManejoRespuesta = new ManejoRespuesta;
+    private pacientes = CommentFactory(null, null);
 
     obtenerPacientesConSolicitudes(): Promise<RespuestaServidor<Paciente[]>> {
         return new Promise(resolve => {
-            PacientesModel.findAll({
+            this.pacientes.findAll({
                 include: [
                     { model: SolicitudesModel, as: "solicitudes" }
                 ]

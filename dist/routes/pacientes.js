@@ -1,4 +1,12 @@
 "use strict";
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : new P(function (resolve) { resolve(result.value); }).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
 var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
@@ -6,45 +14,45 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const implementaciones_1 = require("../dao/implementaciones");
 const router = express_1.default.Router();
-router.get('/getAll', async (req, res, next) => {
+router.get('/getAll', (req, res, next) => __awaiter(this, void 0, void 0, function* () {
     const opPacientes = new implementaciones_1.OperPacientesIm();
-    const resBD = await opPacientes.getAll();
+    const resBD = yield opPacientes.getAll();
     res.json(resBD);
-});
-router.get('/getWithRequests', async (req, res, next) => {
+}));
+router.get('/getWithRequests', (req, res, next) => __awaiter(this, void 0, void 0, function* () {
     const opPacientes = new implementaciones_1.OperPacientesIm();
-    const resBD = await opPacientes.obtenerPacientesConSolicitudes();
+    const resBD = yield opPacientes.obtenerPacientesConSolicitudes();
     res.json(resBD);
-});
-router.post('/login', async (req, res, next) => {
+}));
+router.post('/login', (req, res, next) => __awaiter(this, void 0, void 0, function* () {
     const paciente = req.body;
     const opPacientes = new implementaciones_1.OperPacientesIm();
-    const resBD = await opPacientes.login(paciente);
+    const resBD = yield opPacientes.login(paciente);
     res.json(resBD);
-});
-router.get('/get/:id', async (req, res, next) => {
+}));
+router.get('/get/:id', (req, res, next) => __awaiter(this, void 0, void 0, function* () {
     const id = req.params.id;
     const opPacientes = new implementaciones_1.OperPacientesIm();
-    const resBD = await opPacientes.get(id);
+    const resBD = yield opPacientes.get(id);
     res.json(resBD);
-});
-router.post('/new', async (req, res, next) => {
+}));
+router.post('/new', (req, res, next) => __awaiter(this, void 0, void 0, function* () {
     const paciente = req.body;
     const opPacientes = new implementaciones_1.OperPacientesIm();
-    const resBD = await opPacientes.create(paciente);
+    const resBD = yield opPacientes.create(paciente);
     res.json(resBD);
-});
-router.put('/update', async (req, res, next) => {
+}));
+router.put('/update', (req, res, next) => __awaiter(this, void 0, void 0, function* () {
     const paciente = req.body;
     const opPacientes = new implementaciones_1.OperPacientesIm();
-    const resBD = await opPacientes.update(paciente);
+    const resBD = yield opPacientes.update(paciente);
     res.json(resBD);
-});
-router.delete('/delete/:id', async (req, res, next) => {
+}));
+router.delete('/delete/:id', (req, res, next) => __awaiter(this, void 0, void 0, function* () {
     const id = req.params.id;
     const opPacientes = new implementaciones_1.OperPacientesIm();
-    const resBD = await opPacientes.delete(id);
+    const resBD = yield opPacientes.delete(id);
     res.json(resBD);
-});
+}));
 exports.routes = router;
 //# sourceMappingURL=pacientes.js.map

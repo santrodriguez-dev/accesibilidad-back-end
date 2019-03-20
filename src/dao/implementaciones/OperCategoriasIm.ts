@@ -1,12 +1,20 @@
 import { OperCategorias } from "../interfaces/OperCategorias";
 import { Categoria } from "../../dto";
-import { CategoriasModel } from "../../models/Categorias";
+import { UserFactory } from "../../models/Categorias";
+import { sequelizeBD } from "models/index";
+// import { sequelizeBD } from ".";
 
 export class OperCategoriasIm implements OperCategorias {
 
+    model: any;
+
+    constructor() {
+        this.model = UserFactory(sequelizeBD);
+    }
+
     getAll(): Promise<Categoria[]> {
         return new Promise(resolve => {
-            CategoriasModel.findAll().then(resBD => {
+            this.model.findAll().then(resBD => {
                 resolve(resBD)
             }).catch(err => {
                 console.log(err)
