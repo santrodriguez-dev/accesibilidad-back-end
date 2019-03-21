@@ -6,11 +6,40 @@ import logger from "morgan";
 import cors from "cors";
 // import socketIO from 'socket.io'; // socket.io
 import routes from './routes/index'; //ubicacion de rutas raiz
+import Sequelize, { Options } from 'sequelize';
 // import SocketIO from "socket.io";
 
+const env = process.env.NODE_ENV || "production";
+// const config = require(__dirname + "./../../config/config.json")[env];
 
+const config: Options = {
+  username: "atscwvlynimdsj",
+  password: "c24b33df53e4b49f64d6ab1c0a0e8caae0d7e0a3e04ed4b24589cc8b5f9db846",
+  database: "dd6s6sevdeocps",
+  host: "ec2-50-17-194-129.compute-1.amazonaws.com",
+  port: 5432,
+  dialectOptions: {
+    ssl: true,
+    dialect: "postgres",
+  },
+  logging: true
+}
 
+export const sequelizeBD = new Sequelize.Sequelize(config.database,
+  config.username,
+  config.password,
+  config.dialectOptions);
+
+sequelizeBD
+  .authenticate()
+  .then(() => {
+    console.log('Connection has been established successfully.');
+  })
+  .catch(err => {
+    console.error('Unable to connect to the database:', err);
+  });
 // Create Express server
+
 const app = express();
 app.use(cors());
 

@@ -1,72 +1,69 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-const Solicitudes_1 = require("../../models/Solicitudes");
-const Categorias_1 = require("../../models/Categorias");
-const Pacientes_1 = require("../../models/Pacientes");
-const Clasificaciones_1 = require("../../models/Clasificaciones");
-const manejoRespuesta_1 = require("./manejoRespuesta");
-const routes_1 = require("../../routes");
-class OperSolicitudesIm {
-    constructor() {
-        this.resp = new manejoRespuesta_1.ManejoRespuesta;
-    }
-    crearSolicitud(solicitud) {
-        return new Promise(resolve => {
-            Solicitudes_1.SolicitudesModel.create(solicitud).then(resBD => {
-                const res = this.resp.respSatisfactoria(true);
-                routes_1.socketNuevaSolicitud.emit('nuevaSolicitud', resBD);
-                resolve(res);
-            }).catch(err => {
-                resolve(this.resp.lanzarError(err.message));
-            });
-        });
-    }
-    solicitudesPorPaciente(idPaciente) {
-        return new Promise(resolve => {
-            Solicitudes_1.SolicitudesModel
-                .findAll({ where: { paciente_id: idPaciente } })
-                .then(resBD => {
-                const res = this.resp.respSatisfactoria(resBD);
-                resolve(res);
-            }).catch(err => {
-                resolve(this.resp.lanzarError(err.message));
-            });
-        });
-    }
-    getAll() {
-        return new Promise(resolve => {
-            Solicitudes_1.SolicitudesModel
-                .findAll({
-                include: [
-                    { model: Categorias_1.CategoriasModel, as: "categoria" },
-                    { model: Clasificaciones_1.ClasificacionesModel, as: "clasificacion" },
-                    { model: Pacientes_1.PacientesModel, as: "paciente" }
-                ],
-                order: [['createdAt', 'DESC']]
-            })
-                .then(resBD => {
-                routes_1.socketNuevaSolicitud.emit('nuevaSolicitud', resBD);
-                const res = this.resp.respSatisfactoria(resBD);
-                resolve(res);
-            }).catch(err => {
-                resolve(this.resp.lanzarError(err.message));
-            });
-        });
-    }
-    get(id) {
-        return new Promise(resolve => {
-            Solicitudes_1.SolicitudesModel.findById(id, {
-                include: [
-                    { model: Pacientes_1.PacientesModel, as: "paciente" }
-                ]
-            }).then(resBD => {
-                const res = this.resp.respSatisfactoria(resBD);
-                resolve(res);
-            }).catch(err => {
-                resolve(this.resp.lanzarError(err.message));
-            });
-        });
-    }
-}
-exports.OperSolicitudesIm = OperSolicitudesIm;
-//# sourceMappingURL=OperSolicitudesIm.js.map
+// import { OperSolicitudes } from "../interfaces/OperSolicitudes";
+// import { Solicitud, RespuestaServidor } from "../../dto";
+// import { SolicitudesModel } from "../../models/Solicitudes";
+// import { CategoriasModel } from "../../models/Categorias";
+// import { PacientesModel } from "../../models/Pacientes";
+// import { ClasificacionesModel } from "../../models/Clasificaciones";
+// import { ManejoRespuesta } from "./manejoRespuesta";
+// import { socketNuevaSolicitud } from "../../routes";
+// export class OperSolicitudesIm implements OperSolicitudes {
+//     private resp: ManejoRespuesta = new ManejoRespuesta;
+//     crearSolicitud(solicitud: Solicitud): Promise<RespuestaServidor<boolean>> {
+//         return new Promise(resolve => {
+//             SolicitudesModel.create(solicitud).then(resBD => {
+//                 const res = this.resp.respSatisfactoria(true);
+//                 socketNuevaSolicitud.emit('nuevaSolicitud', resBD);
+//                 resolve(res);
+//             }).catch(err => {
+//                 resolve(this.resp.lanzarError(err.message));
+//             })
+//         });
+//     }
+//     solicitudesPorPaciente(idPaciente: string): Promise<RespuestaServidor<Solicitud[]>> {
+//         return new Promise(resolve => {
+//             SolicitudesModel
+//                 .findAll({ where: { paciente_id: idPaciente } })
+//                 .then(resBD => {
+//                     const res = this.resp.respSatisfactoria(resBD)
+//                     resolve(res);
+//                 }).catch(err => {
+//                     resolve(this.resp.lanzarError(err.message));
+//                 })
+//         });
+//     }
+//     getAll(): Promise<RespuestaServidor<Solicitud[]>> {
+//         return new Promise(resolve => {
+//             SolicitudesModel
+//                 .findAll({
+//                     include: [
+//                         { model: CategoriasModel, as: "categoria" },
+//                         { model: ClasificacionesModel, as: "clasificacion" },
+//                         { model: PacientesModel, as: "paciente" }
+//                     ],
+//                     order: [['createdAt', 'DESC']]
+//                 })
+//                 .then(resBD => {
+//                     socketNuevaSolicitud.emit('nuevaSolicitud', resBD);
+//                     const res = this.resp.respSatisfactoria(resBD)
+//                     resolve(res);
+//                 }).catch(err => {
+//                     resolve(this.resp.lanzarError(err.message));
+//                 })
+//         });
+//     }
+//     get(id: number): Promise<RespuestaServidor<Solicitud | null>> {
+//         return new Promise(resolve => {
+//             SolicitudesModel.findById(id, {
+//                 include: [
+//                     { model: PacientesModel, as: "paciente" }
+//                 ]
+//             }).then(resBD => {
+//                 const res = this.resp.respSatisfactoria(resBD);
+//                 resolve(res);
+//             }).catch(err => {
+//                 resolve(this.resp.lanzarError(err.message));
+//             })
+//         });
+//     }
+// }
+//# sourceMappingURL=OpersolicitudesIm.js.map

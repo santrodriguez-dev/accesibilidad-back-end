@@ -15,44 +15,45 @@ const express_1 = __importDefault(require("express"));
 const implementaciones_1 = require("../dao/implementaciones");
 const router = express_1.default.Router();
 router.get('/getAll', (req, res, next) => __awaiter(this, void 0, void 0, function* () {
+    // res.send('todos los pacientes')
     const opPacientes = new implementaciones_1.OperPacientesIm();
     const resBD = yield opPacientes.getAll();
     res.json(resBD);
 }));
-router.get('/getWithRequests', (req, res, next) => __awaiter(this, void 0, void 0, function* () {
-    const opPacientes = new implementaciones_1.OperPacientesIm();
-    const resBD = yield opPacientes.obtenerPacientesConSolicitudes();
-    res.json(resBD);
-}));
-router.post('/login', (req, res, next) => __awaiter(this, void 0, void 0, function* () {
-    const paciente = req.body;
-    const opPacientes = new implementaciones_1.OperPacientesIm();
-    const resBD = yield opPacientes.login(paciente);
-    res.json(resBD);
-}));
-router.get('/get/:id', (req, res, next) => __awaiter(this, void 0, void 0, function* () {
-    const id = req.params.id;
-    const opPacientes = new implementaciones_1.OperPacientesIm();
-    const resBD = yield opPacientes.get(id);
-    res.json(resBD);
-}));
-router.post('/new', (req, res, next) => __awaiter(this, void 0, void 0, function* () {
-    const paciente = req.body;
-    const opPacientes = new implementaciones_1.OperPacientesIm();
-    const resBD = yield opPacientes.create(paciente);
-    res.json(resBD);
-}));
-router.put('/update', (req, res, next) => __awaiter(this, void 0, void 0, function* () {
-    const paciente = req.body;
-    const opPacientes = new implementaciones_1.OperPacientesIm();
-    const resBD = yield opPacientes.update(paciente);
-    res.json(resBD);
-}));
-router.delete('/delete/:id', (req, res, next) => __awaiter(this, void 0, void 0, function* () {
-    const id = req.params.id;
-    const opPacientes = new implementaciones_1.OperPacientesIm();
-    const resBD = yield opPacientes.delete(id);
-    res.json(resBD);
-}));
+// router.get('/getWithRequests', async (req: Request, res: Response, next: NextFunction) => {
+//   const opPacientes = new OperPacientesIm();
+//   const resBD = await opPacientes.obtenerPacientesConSolicitudes();
+//   res.json(resBD);
+// });
+// router.post('/login', async (req: Request, res: Response, next: NextFunction) => {
+//   const paciente: Paciente = req.body;
+//   const opPacientes = new OperPacientesIm();
+//   const resBD = await opPacientes.login(paciente);
+//   res.json(resBD);
+// });
+// router.get('/get/:id', async (req: Request, res: Response, next: NextFunction) => {
+//   const id = req.params.id;
+//   const opPacientes = new OperPacientesIm();
+//   const resBD = await opPacientes.get(id);
+//   res.json(resBD);
+// });
+// router.post('/new', async (req: Request, res: Response, next: NextFunction) => {
+//   const paciente: Paciente = req.body;
+//   const opPacientes = new OperPacientesIm();
+//   const resBD = await opPacientes.create(paciente);
+//   res.json(resBD);
+// });
+// router.put('/update', async (req: Request, res: Response, next: NextFunction) => {
+//   const paciente: Paciente = req.body;
+//   const opPacientes = new OperPacientesIm();
+//   const resBD = await opPacientes.update(paciente);
+//   res.json(resBD);
+// });
+// router.delete('/delete/:id', async (req: Request, res: Response, next: NextFunction) => {
+//   const id = req.params.id;
+//   const opPacientes = new OperPacientesIm();
+//   const resBD = await opPacientes.delete(id);
+//   res.json(resBD);
+// });
 exports.routes = router;
 //# sourceMappingURL=pacientes.js.map

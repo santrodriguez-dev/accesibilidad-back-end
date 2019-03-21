@@ -1,41 +1,30 @@
-"use strict";
-var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
-    return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : new P(function (resolve) { resolve(result.value); }).then(fulfilled, rejected); }
-        step((generator = generator.apply(thisArg, _arguments || [])).next());
-    });
-};
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-const express_1 = __importDefault(require("express"));
-const implementaciones_1 = require("../dao/implementaciones");
-const router = express_1.default.Router();
-router.get('/getAll', (req, res) => __awaiter(this, void 0, void 0, function* () {
-    const opSolicitudes = new implementaciones_1.OperSolicitudesIm();
-    const resBD = yield opSolicitudes.getAll();
-    res.json(resBD);
-}));
-router.get('/get/:id', (req, res) => __awaiter(this, void 0, void 0, function* () {
-    const id = req.params.id;
-    const opSolicitudes = new implementaciones_1.OperSolicitudesIm();
-    const resBD = yield opSolicitudes.get(id);
-    res.json(resBD);
-}));
-router.get('/paciente/:id', (req, res) => __awaiter(this, void 0, void 0, function* () {
-    const id = req.params.id;
-    const opSolicitudes = new implementaciones_1.OperSolicitudesIm();
-    const resBD = yield opSolicitudes.solicitudesPorPaciente(id);
-    res.json(resBD);
-}));
-router.post('/crear', (req, res) => __awaiter(this, void 0, void 0, function* () {
-    const solicititud = req.body;
-    const opSolicitudes = new implementaciones_1.OperSolicitudesIm();
-    const resBD = yield opSolicitudes.crearSolicitud(solicititud);
-    res.json(resBD);
-}));
-exports.routes = router;
+// import express from "express";
+// import { Request, Response } from "express";
+// import { OperSolicitudesIm } from "../dao/implementaciones";
+// import { Solicitud } from "../dto";
+// const router = express.Router();
+// router.get('/getAll', async (req: Request, res: Response) => {
+//     const opSolicitudes = new OperSolicitudesIm();
+//     const resBD = await opSolicitudes.getAll();
+//     res.json(resBD);
+// });
+// router.get('/get/:id', async (req: Request, res: Response) => {
+//     const id = req.params.id;
+//     const opSolicitudes = new OperSolicitudesIm();
+//     const resBD = await opSolicitudes.get(id);
+//     res.json(resBD);
+// });
+// router.get('/paciente/:id', async (req: Request, res: Response) => {
+//     const id = req.params.id;
+//     const opSolicitudes = new OperSolicitudesIm();
+//     const resBD = await opSolicitudes.solicitudesPorPaciente(id);
+//     res.json(resBD);
+// });
+// router.post('/crear', async (req: Request, res: Response) => {
+//     const solicititud: Solicitud = req.body;
+//     const opSolicitudes = new OperSolicitudesIm();
+//     const resBD = await opSolicitudes.crearSolicitud(solicititud);
+//     res.json(resBD);
+// });
+// export let routes = router;
 //# sourceMappingURL=solicitudes.js.map

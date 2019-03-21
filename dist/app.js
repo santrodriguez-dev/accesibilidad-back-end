@@ -11,7 +11,31 @@ const morgan_1 = __importDefault(require("morgan"));
 const cors_1 = __importDefault(require("cors"));
 // import socketIO from 'socket.io'; // socket.io
 const index_1 = __importDefault(require("./routes/index")); //ubicacion de rutas raiz
+const sequelize_1 = __importDefault(require("sequelize"));
 // import SocketIO from "socket.io";
+const env = process.env.NODE_ENV || "production";
+// const config = require(__dirname + "./../../config/config.json")[env];
+const config = {
+    username: "atscwvlynimdsj",
+    password: "c24b33df53e4b49f64d6ab1c0a0e8caae0d7e0a3e04ed4b24589cc8b5f9db846",
+    database: "dd6s6sevdeocps",
+    host: "ec2-50-17-194-129.compute-1.amazonaws.com",
+    port: 5432,
+    dialectOptions: {
+        ssl: true,
+        dialect: "postgres",
+    },
+    logging: true
+};
+exports.sequelizeBD = new sequelize_1.default.Sequelize(config.database, config.username, config.password, config.dialectOptions);
+exports.sequelizeBD
+    .authenticate()
+    .then(() => {
+    console.log('Connection has been established successfully.');
+})
+    .catch(err => {
+    console.error('Unable to connect to the database:', err);
+});
 // Create Express server
 const app = express_1.default();
 app.use(cors_1.default());
