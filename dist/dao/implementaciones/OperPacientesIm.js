@@ -10,8 +10,9 @@ Object.defineProperty(exports, "__esModule", { value: true });
 // import { CommentFactory } from "../../models/Pacientes";
 // import { SolicitudesModel } from "../../models/Solicitudes";
 const manejoRespuesta_1 = require("./manejoRespuesta");
+// import { sequelizeBD } from "../../models";
 // import { sequelizeBD } from "models/index";
-const pacienteModel = __importStar(require("../../models"));
+const ddddd = __importStar(require("../../models"));
 class OperPacientesIm {
     constructor() {
         this.resp = new manejoRespuesta_1.ManejoRespuesta;
@@ -99,7 +100,7 @@ class OperPacientesIm {
         // }
     }
     getAll() {
-        console.log(pacienteModel);
+        console.log(ddddd.);
         // return sequelizeBD;
         // pacienteModel.findByPk(null).then((res: any) => {
         //     console.log(res);

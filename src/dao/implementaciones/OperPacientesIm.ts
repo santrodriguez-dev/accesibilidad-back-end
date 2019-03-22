@@ -7,9 +7,9 @@ import { ManejoRespuesta } from "./manejoRespuesta";
 // import { Options, Sequelize } from "sequelize";
 import * as Sequelize from 'sequelize';
 import { Options, ModelAttributes } from "sequelize";
-import { sequelizeBD } from "../../models";
+// import { sequelizeBD } from "../../models";
 // import { sequelizeBD } from "models/index";
-import * as pacienteModel from "../../models";
+import * as ddddd from "../../models";
 
 export class OperPacientesIm {
 
@@ -18,7 +18,7 @@ export class OperPacientesIm {
     getAll() {
 
 
-        console.log(pacienteModel);
+        console.log(ddddd);
         // return sequelizeBD;
 
         // pacienteModel.findByPk(null).then((res: any) => {

@@ -1,6 +1,7 @@
 import * as Sequelize from 'sequelize';
 import { ModelAttributes } from "sequelize/types";
-import { sequelizeBD } from '../models';
+import { sequelizeBD } from '.';
+// import * as db from '../models';
 
 export interface PacienteAttributes {
     id?: number;
@@ -22,6 +23,14 @@ const attr: ModelAttributes = {
     foto: Sequelize.STRING,
 }
 
-export const pacienteModel = sequelizeBD.define('paciente', attr);
-
-// pacienteModel.has
+export default (sequalize: Sequelize.Sequelize) => {
+    const attributes: ModelAttributes = {
+        id: { type: Sequelize.UUID, primaryKey: true, defaultValue: Sequelize.UUIDV4 },
+        email: { type: Sequelize.STRING, },
+        name: { type: Sequelize.STRING, },
+        speciality: { type: Sequelize.STRING },
+        phone: { type: Sequelize.STRING },
+        photo: { type: Sequelize.STRING },
+    };
+    return sequelizeBD.define("doctor", attributes, {});
+};

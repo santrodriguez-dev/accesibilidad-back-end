@@ -8,7 +8,6 @@ var __importStar = (this && this.__importStar) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const Sequelize = __importStar(require("sequelize"));
-const models_1 = require("../models");
 ;
 const attr = {
     nom_usuario: { type: Sequelize.STRING, allowNull: false, primaryKey: true, unique: true },
@@ -19,6 +18,15 @@ const attr = {
     direccion: Sequelize.STRING,
     foto: Sequelize.STRING,
 };
-exports.pacienteModel = models_1.sequelizeBD.define('paciente', attr);
-// pacienteModel.has
+exports.default = (sequalize) => {
+    const attributes = {
+        id: { type: Sequelize.UUID, primaryKey: true, defaultValue: Sequelize.UUIDV4 },
+        email: { type: Sequelize.STRING, allowNull: false },
+        name: { type: Sequelize.STRING, allowNull: false },
+        speciality: { type: Sequelize.STRING, allowNull: false, defaultValue: false },
+        phone: { type: Sequelize.STRING, allowNull: false, defaultValue: false },
+        photo: { type: Sequelize.STRING, allowNull: false, defaultValue: false },
+    };
+    return sequalize.define("doctor", attributes, {});
+};
 //# sourceMappingURL=Pacientes.js.map
