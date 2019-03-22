@@ -1,3 +1,4 @@
+"use strict";
 // import { RespuestaServidor, Seguim_solicitud } from "../../dto";
 // import { ManejoRespuesta } from "./manejoRespuesta";
 // import { OperSeguimSolicitud } from "../interfaces/OperSeguimSolicitud";

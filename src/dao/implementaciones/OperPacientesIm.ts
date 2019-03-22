@@ -3,13 +3,35 @@ import { Paciente, RespuestaServidor } from "../../dto";
 // import { CommentFactory } from "../../models/Pacientes";
 // import { SolicitudesModel } from "../../models/Solicitudes";
 import { ManejoRespuesta } from "./manejoRespuesta";
-import { PacientesModel } from "models/Pacientes";
+// import { Sequelize } from "sequelize/types";
+// import { Options, Sequelize } from "sequelize";
+import * as Sequelize from 'sequelize';
+import { Options, ModelAttributes } from "sequelize";
+import { sequelizeBD } from "../../models";
+// import { sequelizeBD } from "models/index";
+import * as pacienteModel from "../../models";
 
 export class OperPacientesIm {
 
     private resp: ManejoRespuesta = new ManejoRespuesta;
 
     getAll() {
+
+
+        console.log(pacienteModel);
+        // return sequelizeBD;
+
+        // pacienteModel.findByPk(null).then((res: any) => {
+        //     console.log(res);
+        // })
+
+        // Project.findAll().then(project => {
+        //     // project will be an instance of Project and stores the content of the table entry
+        //     // with id 123. if such an entry is not defined you will get null
+        //     console.log(project);
+
+        // })
+
         return [0, 1, 2, 3];
         // PacientesModel.
         // return new Promise(resolve => {

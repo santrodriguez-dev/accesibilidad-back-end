@@ -1,3 +1,4 @@
+"use strict";
 // import { OperCategorias } from "../interfaces/OperCategorias";
 // import { Categoria } from "../../dto";
 // import { UserFactory } from "../../models/Categorias";

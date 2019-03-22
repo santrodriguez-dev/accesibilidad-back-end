@@ -1,8 +1,17 @@
 "use strict";
+var __importStar = (this && this.__importStar) || function (mod) {
+    if (mod && mod.__esModule) return mod;
+    var result = {};
+    if (mod != null) for (var k in mod) if (Object.hasOwnProperty.call(mod, k)) result[k] = mod[k];
+    result["default"] = mod;
+    return result;
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 // import { CommentFactory } from "../../models/Pacientes";
 // import { SolicitudesModel } from "../../models/Solicitudes";
 const manejoRespuesta_1 = require("./manejoRespuesta");
+// import { sequelizeBD } from "models/index";
+const pacienteModel = __importStar(require("../../models"));
 class OperPacientesIm {
     constructor() {
         this.resp = new manejoRespuesta_1.ManejoRespuesta;
@@ -90,6 +99,16 @@ class OperPacientesIm {
         // }
     }
     getAll() {
+        console.log(pacienteModel);
+        // return sequelizeBD;
+        // pacienteModel.findByPk(null).then((res: any) => {
+        //     console.log(res);
+        // })
+        // Project.findAll().then(project => {
+        //     // project will be an instance of Project and stores the content of the table entry
+        //     // with id 123. if such an entry is not defined you will get null
+        //     console.log(project);
+        // })
         return [0, 1, 2, 3];
         // PacientesModel.
         // return new Promise(resolve => {

@@ -1,3 +1,4 @@
+"use strict";
 // import Sequelize, { DefineModelAttributes } from "sequelize";
 // import { sequelize } from ".";
 // import { Clasificacion } from "../dto";

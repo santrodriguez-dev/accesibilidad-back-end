@@ -1,3 +1,4 @@
+"use strict";
 // import Sequelize, { ModelAttributeColumnOptions } from "sequelize";
 // import { Usuario } from "../dto/Usuario";
 // import { sequelizeBD } from ".";

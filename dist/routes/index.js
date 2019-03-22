@@ -2,13 +2,20 @@
 var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
+var __importStar = (this && this.__importStar) || function (mod) {
+    if (mod && mod.__esModule) return mod;
+    var result = {};
+    if (mod != null) for (var k in mod) if (Object.hasOwnProperty.call(mod, k)) result[k] = mod[k];
+    result["default"] = mod;
+    return result;
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const router = express_1.default.Router();
 const socket_io_1 = __importDefault(require("socket.io"));
 // import * as solicitudesRouter from "./solicitudes";
 // import * as usuariosRouter from "./usuarios";
-// import * as pacientesRouter from "./pacientes";
+const pacientesRouter = __importStar(require("./pacientes"));
 // import * as categoriasRouter from "./categorias";
 // import * as clasificacionesRouter from "./clasificaciones";
 // import * as seguim_solicitudRouter from "./seguim_solicitud";
@@ -16,7 +23,7 @@ exports.default = (app) => {
     app.use('/', index);
     // app.use('/solicitudes', solicitudesRouter.routes);
     // app.use('/usuarios', usuariosRouter.routes);
-    // app.use('/pacientes', pacientesRouter.routes);
+    app.use('/pacientes', pacientesRouter.routes);
     // app.use('/categorias', categoriasRouter.routes);
     // app.use('/clasificaciones', clasificacionesRouter.routes);
     // app.use('/seguimsolicitud', seguim_solicitudRouter.routes);
