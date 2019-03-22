@@ -1,34 +1,35 @@
 'use strict';
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('pacientes', {
-      nom_usuario: {
+    return queryInterface.createTable('patients', {
+      id: {
+        allowNull: false,
+        autoIncrement: true,
         primaryKey: true,
-        allowNull: false,
+        type: Sequelize.INTEGER
+      },
+      email: {
         type: Sequelize.STRING
       },
-      contrasena: {
-        allowNull: false,
+      password: {
         type: Sequelize.STRING
       },
-      documento: {
-        allowNull: false,
+      identification: {
         type: Sequelize.STRING
       },
-      nombre: {
-        allowNull: false,
+      name: {
         type: Sequelize.STRING
       },
-      telefono: {
-        allowNull: false,
+      birthdate: {
+        type: Sequelize.DATE
+      },
+      phone: {
         type: Sequelize.STRING
       },
-      direccion: {
-        allowNull: true,
+      address: {
         type: Sequelize.STRING
       },
-      foto: {
-        allowNull: true,
+      photo: {
         type: Sequelize.STRING
       },
       createdAt: {
@@ -42,6 +43,6 @@ module.exports = {
     });
   },
   down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('pacientes');
+    return queryInterface.dropTable('patients');
   }
 };

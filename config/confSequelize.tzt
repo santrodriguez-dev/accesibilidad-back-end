@@ -1,0 +1,26 @@
+sequelize model:generate --name user --attributes nom_usuario:string,contrasena:string,nombre:string,telefono:string,direccion:string,foto:string
+sequelize model:generate --name patient --attributes nom_usuario:string,contrasena:string,documento:string,nombre:string,telefono:string,direccion:string
+sequelize model:generate --name categorias --attributes id:number,nombre:string,descripcion:string
+sequelize model:generate --name clasificaciones --attributes id:number,nombre:string,descripcion:string
+sequelize model:generate --name solicitudes --attributes id:number,paciente_id:string,categoria_id:number,clasificacion_id:number
+sequelize model:generate --name seguim_solicitud --attributes id:number,solicitud_id:number,diagnostico:string,observacion:string
+
+V2
+
+sequelize model:generate --name user_administrator --attributes email:string,password:string,identification:string,name:string,phone:string,address:string,photo:string
+sequelize model:generate --name medical_center --attributes name:string,city:string,address:string,phone:string,photo:string,description:string,coordLat:string,coordLong:string
+sequelize model:generate --name doctor_medical_center --attributes doctor_id:string,medical_center_id:string
+sequelize model:generate --name doctor --attributes email:string,name:string,speciality:string,phone:string,photo:string
+sequelize model:generate --name medical_emergency --attributes patient_id:string,doctor_id:string,medical_center_id:string,date:date,priority:string,state:string,photo:string,patient_description:string,doctor_description:string,address:string,coordLat:string,coordLong:string
+sequelize model:generate --name patient --attributes email:string,password:string,identification:string,name:string,birthdate:date,phone:string,address:string,photo:string
+sequelize model:generate --name clinic_history --attributes patient_id:string,diagnosis:string,severity_level:string,description:string,date:date
+
+
+coordLat:string,coordLong:string
+
+sequelize db:migrate --env production
+sequelize db:migrate:undo
+sequelize db:migrate:undo:all --env production
+
+INSERT INTO clasificaciones (nombre,descripcion,"createdAt","updatedAt")
+VALUES ('Clasificacion A','Descripcion A','03/03/2018','03/03/2018');

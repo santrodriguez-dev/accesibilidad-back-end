@@ -1,20 +1,35 @@
 'use strict';
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('seguim_solicitud', {
+    return queryInterface.createTable('medical_centers', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      solicitud_id: {
-        type: Sequelize.INTEGER
-      },
-      diagnostico: {
+      name: {
         type: Sequelize.STRING
       },
-      observacion: {
+      city: {
+        type: Sequelize.STRING
+      },
+      address: {
+        type: Sequelize.STRING
+      },
+      phone: {
+        type: Sequelize.STRING
+      },
+      photo: {
+        type: Sequelize.STRING
+      },
+      description: {
+        type: Sequelize.STRING
+      },
+      coordLat: {
+        type: Sequelize.STRING
+      },
+      coordLong: {
         type: Sequelize.STRING
       },
       createdAt: {
@@ -28,6 +43,6 @@ module.exports = {
     });
   },
   down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('seguim_solicitud');
+    return queryInterface.dropTable('medical_centers');
   }
 };
