@@ -61,12 +61,9 @@ import * as medicalEmergencyRouter from "./medical-emergency";
 import * as userAdminRouter from "./user-admin";
 
 export function registerRoutes(app: express.Express) {
-
   app.use('/patient', patientRouter.routes);
   app.use('/clinic-history', clinicHistoryRouter.routes);
   app.use('/medical-center', medicalCenterRouter.routes);
   app.use('/medical-emergency', medicalEmergencyRouter.routes);
   app.use('/user-admin', userAdminRouter.routes);
-  // app.use('patient')
-  // app.use('patient')
 }

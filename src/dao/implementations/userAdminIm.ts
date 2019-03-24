@@ -1,5 +1,5 @@
 import { ServerResponse } from "./server-response";
-import { UserAdministrator } from "../../models/user-administrator";
+import { UserAdministrator } from "../models/user-administrator";
 
 export class UserAdminIm {
 

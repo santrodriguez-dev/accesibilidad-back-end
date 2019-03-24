@@ -1,5 +1,5 @@
 import { ServerResponse } from "./server-response";
-import { ClinicHistory } from "../../models/clinic-history";
+import { ClinicHistory } from "../models/clinic-history";
 
 export class ClinicHistoryIm {
 

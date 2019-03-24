@@ -9,6 +9,7 @@ const cors_1 = __importDefault(require("cors"));
 const http_errors_1 = __importDefault(require("http-errors"));
 const morgan_1 = __importDefault(require("morgan"));
 const cookie_parser_1 = __importDefault(require("cookie-parser"));
+const models_1 = require("./dao/models");
 class Server {
     // builder
     constructor(port) {
@@ -58,11 +59,10 @@ class Server {
 //       () => console.info(`Server running on port ${port}`)
 //     );
 // })();
-const models_1 = require("./models");
 // import { Doctor } from './patient';
 // const credentials = config[get('NODE_ENV', 'development')];
 (async () => {
-    await models_1.sequelizeBD.sync({ force: false });
+    await models_1.sequelizeBD.sync({ force: true });
     // instance server
     const server = Server.init(3000);
     // run server

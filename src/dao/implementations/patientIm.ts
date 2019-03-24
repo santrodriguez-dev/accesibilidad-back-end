@@ -1,5 +1,5 @@
-import { Patient } from "../../models/patient";
 import { ServerResponse } from "./server-response";
+import { Patient } from "../models/patient";
 
 export class PatientIm {
 

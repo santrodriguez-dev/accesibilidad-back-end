@@ -1,5 +1,5 @@
 import { ServerResponse } from "./server-response";
-import { MedicalCenter } from "../../models/medical-center";
+import { MedicalCenter } from "../models/medical-center";
 
 export class MedicalCenterIm {
 

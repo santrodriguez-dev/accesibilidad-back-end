@@ -12,6 +12,7 @@ export class MedicalEmergency extends Model<MedicalEmergency> {
     @Column
     id: number;
 
+    @AllowNull(false)
     @ForeignKey(() => Patient)
     @Column
     patient_id: number;

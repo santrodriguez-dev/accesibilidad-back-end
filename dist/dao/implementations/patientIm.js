@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-const patient_1 = require("../../models/patient");
 const server_response_1 = require("./server-response");
+const patient_1 = require("../models/patient");
 class PatientIm {
     constructor() {
         this.serverResponse = new server_response_1.ServerResponse;
@@ -43,7 +43,7 @@ class PatientIm {
     deleteP(id) {
         return patient_1.Patient.destroy({ where: { id: id } }).then(response => {
             if (response === 0) {
-                return this.serverResponse.throwError('No se ha podido guardar la información');
+                return this.serverResponse.throwError('No se ha eliminado ningun registro');
             }
             return this.serverResponse.successful(true);
         }).catch(err => {

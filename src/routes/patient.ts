@@ -1,8 +1,7 @@
 import { Request, Response } from "express";
 import express, { NextFunction } from "express";
 import { PatientIm } from "../dao/implementations";
-import { Patient } from "../models/patient";
-// import { OperPacientesIm } from "../dao/implementaciones";
+import { Patient } from "../dao/models/patient";
 
 const router = express.Router();
 const opPatient = new PatientIm();

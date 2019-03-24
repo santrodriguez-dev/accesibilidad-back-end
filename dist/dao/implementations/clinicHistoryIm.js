@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const server_response_1 = require("./server-response");
-const clinic_history_1 = require("../../models/clinic-history");
+const clinic_history_1 = require("../models/clinic-history");
 class ClinicHistoryIm {
     constructor() {
         this.serverResponse = new server_response_1.ServerResponse;

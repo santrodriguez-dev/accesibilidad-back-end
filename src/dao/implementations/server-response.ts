@@ -1,4 +1,4 @@
-import { RequestResult } from "../../dto";
+import { RequestResult } from "../dto/request-result";
 
 export class ServerResponse {
     public successful<R>(resBD: R): RequestResult<R> {

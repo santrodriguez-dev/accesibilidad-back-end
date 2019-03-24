@@ -4,6 +4,7 @@ import cors from "cors";
 import createError from "http-errors";
 import logger from "morgan";
 import cookieParser from "cookie-parser";
+import { sequelizeBD } from "./dao/models";
 
 class Server {
   // propierties
@@ -67,7 +68,6 @@ class Server {
 //     );
 // })();
 
-import { sequelizeBD } from "./models";
 // import { Doctor } from './patient';
 
 // const credentials = config[get('NODE_ENV', 'development')];
@@ -76,7 +76,7 @@ import { sequelizeBD } from "./models";
 
 
 (async () => {
-  await sequelizeBD.sync({ force: false });
+  await sequelizeBD.sync({ force: true });
 
   // instance server
   const server = Server.init(3000);

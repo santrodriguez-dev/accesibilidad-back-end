@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const server_response_1 = require("./server-response");
-const user_administrator_1 = require("../../models/user-administrator");
+const user_administrator_1 = require("../models/user-administrator");
 class UserAdminIm {
     constructor() {
         this.serverResponse = new server_response_1.ServerResponse;
