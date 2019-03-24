@@ -79,7 +79,7 @@ class Server {
   await sequelizeBD.sync({ force: false });
 
   // instance server
-  const server = Server.init(3000);
+  const server = Server.init(5000);
   // run server
   server.start(() => console.log("Server started"));
 

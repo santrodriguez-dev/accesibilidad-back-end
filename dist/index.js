@@ -64,7 +64,7 @@ class Server {
 (async () => {
     await models_1.sequelizeBD.sync({ force: false });
     // instance server
-    const server = Server.init(3000);
+    const server = Server.init(5000);
     // run server
     server.start(() => console.log("Server started"));
     // createServer(app).listen(port, () => console.info(`Server running on port ${port}`));
