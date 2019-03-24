@@ -22,8 +22,6 @@ function registerRoutes(app) {
     app.use('/medical-center', medicalCenterRouter.routes);
     app.use('/medical-emergency', medicalEmergencyRouter.routes);
     app.use('/user-admin', userAdminRouter.routes);
-    // app.use('patient')
-    // app.use('patient')
 }
 exports.registerRoutes = registerRoutes;
 //# sourceMappingURL=index.js.map

@@ -9,18 +9,17 @@ import { DoctorMedicalCenter } from './doctor-medical.center';
 import { MedicalEmergency } from './medical-emergency';
 
 
-const env = process.env.NODE_ENV || "development";
+const env = process.env.NODE_ENV || "production";
 const config = require(__dirname + "./../../../config/config.json")[env];
 
-export const sequelizeBD = new Sequelize({
-    database: config.database,
-    dialect: config.dialect,
-    operatorsAliases: Op,
-    username: config.username,
-    password: config.password,
-    storage: ':memory:',
-    // modelPaths: [__dirname + '/models']
-});
+// export const sequelizeBD = new Sequelize({
+//     database: config.database,
+//     dialect: config.dialect,
+//     operatorsAliases: Op,
+//     username: config.username,
+//     password: config.password,
+// });
+export const sequelizeBD = new Sequelize(config.database, config.username, config.password, config);
 
 const models = [
     Patient,

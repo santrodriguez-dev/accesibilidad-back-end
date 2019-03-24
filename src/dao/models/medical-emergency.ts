@@ -37,7 +37,7 @@ export class MedicalEmergency extends Model<MedicalEmergency> {
     medicalCenter: MedicalCenter;
 
     @Column
-    priority: Date;
+    priority: string;
 
     @Column
     state: string;

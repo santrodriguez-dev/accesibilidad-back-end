@@ -26,5 +26,31 @@ router.get('/get/:id', async (req, res, next) => {
         next(e);
     }
 });
+router.post('/save', async (req, res, next) => {
+    try {
+        const medicalEm = req.body;
+        let resBD;
+        if (medicalEm.id) {
+            resBD = await opMedicalEmergency.update(medicalEm);
+        }
+        else {
+            resBD = await opMedicalEmergency.create(medicalEm);
+        }
+        res.json(resBD);
+    }
+    catch (e) {
+        next(e);
+    }
+});
+router.delete('/delete/:id', async (req, res, next) => {
+    try {
+        const id = req.params.id;
+        const resBD = await opMedicalEmergency.delete(id);
+        res.json(resBD);
+    }
+    catch (e) {
+        next(e);
+    }
+});
 exports.routes = router;
 //# sourceMappingURL=medical-emergency.js.map

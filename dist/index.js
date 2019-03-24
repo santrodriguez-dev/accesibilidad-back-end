@@ -62,7 +62,7 @@ class Server {
 // import { Doctor } from './patient';
 // const credentials = config[get('NODE_ENV', 'development')];
 (async () => {
-    await models_1.sequelizeBD.sync({ force: true });
+    await models_1.sequelizeBD.sync({ force: false });
     // instance server
     const server = Server.init(3000);
     // run server

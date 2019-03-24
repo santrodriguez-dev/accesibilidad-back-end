@@ -76,7 +76,7 @@ class Server {
 
 
 (async () => {
-  await sequelizeBD.sync({ force: true });
+  await sequelizeBD.sync({ force: false });
 
   // instance server
   const server = Server.init(3000);
