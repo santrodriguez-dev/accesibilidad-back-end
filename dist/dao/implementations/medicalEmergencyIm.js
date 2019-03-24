@@ -20,6 +20,13 @@ class MedicalEmergencyIm {
             return this.serverResponse.throwError(err.message);
         });
     }
+    getByPatientId(patientId) {
+        return medical_emergency_1.MedicalEmergency.findAll({ where: { patient_id: patientId } }).then(response => {
+            return this.serverResponse.successful(response);
+        }).catch(err => {
+            return this.serverResponse.throwError(err.message);
+        });
+    }
     create(patient) {
         return medical_emergency_1.MedicalEmergency.create(patient).then(response => {
             if (!response) {

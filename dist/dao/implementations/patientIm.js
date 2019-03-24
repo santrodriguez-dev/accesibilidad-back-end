@@ -2,12 +2,17 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const server_response_1 = require("./server-response");
 const patient_1 = require("../models/patient");
+const clinic_history_1 = require("../models/clinic-history");
 class PatientIm {
     constructor() {
         this.serverResponse = new server_response_1.ServerResponse;
     }
     getAll() {
-        return patient_1.Patient.findAll().then(response => {
+        return patient_1.Patient.findAll({
+            include: [
+                { model: clinic_history_1.ClinicHistory }
+            ]
+        }).then(response => {
             return this.serverResponse.successful(response);
         }).catch(err => {
             return this.serverResponse.throwError(err.message);
@@ -15,6 +20,16 @@ class PatientIm {
     }
     get(id) {
         return patient_1.Patient.findByPk(id).then(response => {
+            return this.serverResponse.successful(response);
+        }).catch(err => {
+            return this.serverResponse.throwError(err.message);
+        });
+    }
+    login(email, password) {
+        return patient_1.Patient.findOne({ where: { email: email, password: password } }).then(response => {
+            if (!response) {
+                return this.serverResponse.throwError('Usuario o contraseña inválido');
+            }
             return this.serverResponse.successful(response);
         }).catch(err => {
             return this.serverResponse.throwError(err.message);

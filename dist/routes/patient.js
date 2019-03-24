@@ -26,6 +26,16 @@ router.get('/get/:id', async (req, res, next) => {
         next(e);
     }
 });
+router.post('/login', async (req, res, next) => {
+    try {
+        const credentials = req.body;
+        const resBD = await opPatient.login(credentials.user, credentials.password);
+        res.json(resBD);
+    }
+    catch (e) {
+        next(e);
+    }
+});
 router.post('/save', async (req, res, next) => {
     try {
         const patient = req.body;

@@ -48,7 +48,7 @@ class Server {
     }
     // start server on port
     start(callback) {
-        this.app.listen(this.port, callback());
+        this.app.listen(this.port, '0.0.0.0', callback());
     }
 }
 // (async () => {
@@ -63,10 +63,11 @@ class Server {
 // const credentials = config[get('NODE_ENV', 'development')];
 (async () => {
     await models_1.sequelizeBD.sync({ force: false });
+    const port = 5000;
     // instance server
-    const server = Server.init(5000);
+    const server = Server.init(port);
     // run server
-    server.start(() => console.log("Server started"));
+    server.start(() => console.log("Server started on port: " + port));
     // createServer(app).listen(port, () => console.info(`Server running on port ${port}`));
 })();
 //# sourceMappingURL=index.js.map

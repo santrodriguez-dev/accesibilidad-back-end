@@ -1,6 +1,7 @@
 import { Request, Response } from "express";
 import express, { NextFunction } from "express";
 import { UserAdminIm } from "../dao/implementations/userAdminIm";
+import { Credentials } from "../dao/dto/credentials";
 
 const router = express.Router();
 const opUserAdmin = new UserAdminIm();
@@ -23,11 +24,6 @@ router.get('/get/:id', async (req: Request, res: Response, next: NextFunction) =
     next(e);
   }
 });
-
-interface Credentials {
-  user: string,
-  password: string;
-}
 
 router.post('/login', async (req: Request, res: Response, next: NextFunction) => {
   try {

@@ -9,8 +9,8 @@ export class ServerResponse {
         return response;
 
     }
-    public throwError<R>(message: string): RequestResult<R> {
-        const response: RequestResult<R> = {
+    public throwError(message: string) {
+        const response: RequestResult<null> = {
             successful: false,
             message: message
         };

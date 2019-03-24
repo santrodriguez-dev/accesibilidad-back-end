@@ -1,5 +1,6 @@
 import { ServerResponse } from "./server-response";
 import { Patient } from "../models/patient";
+import { ClinicHistory } from "../models/clinic-history";
 
 export class PatientIm {
 
@@ -8,7 +9,11 @@ export class PatientIm {
     private serverResponse = new ServerResponse;
 
     getAll() {
-        return Patient.findAll().then(response => {
+        return Patient.findAll({
+            include: [
+                { model: ClinicHistory }
+            ]
+        }).then(response => {
             return this.serverResponse.successful(response);
         }).catch(err => {
             return this.serverResponse.throwError(err.message);
@@ -17,6 +22,17 @@ export class PatientIm {
 
     get(id: number) {
         return Patient.findByPk(id).then(response => {
+            return this.serverResponse.successful(response);
+        }).catch(err => {
+            return this.serverResponse.throwError(err.message);
+        });
+    }
+
+    login(email: string, password: string) {
+        return Patient.findOne({ where: { email: email, password: password } }).then(response => {
+            if (!response) {
+                return this.serverResponse.throwError('Usuario o contraseña inválido');
+            }
             return this.serverResponse.successful(response);
         }).catch(err => {
             return this.serverResponse.throwError(err.message);

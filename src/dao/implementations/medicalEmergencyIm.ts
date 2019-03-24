@@ -23,6 +23,14 @@ export class MedicalEmergencyIm {
         });
     }
 
+    getByPatientId(patientId: number) {
+        return MedicalEmergency.findAll({ where: { patient_id: patientId } }).then(response => {
+            return this.serverResponse.successful(response);
+        }).catch(err => {
+            return this.serverResponse.throwError(err.message);
+        });
+    }
+
     create(patient: MedicalEmergency) {
         return MedicalEmergency.create(patient).then(response => {
             if (!response) {

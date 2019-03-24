@@ -2,6 +2,7 @@ import { Request, Response } from "express";
 import express, { NextFunction } from "express";
 import { PatientIm } from "../dao/implementations";
 import { Patient } from "../dao/models/patient";
+import { Credentials } from "../dao/dto/credentials";
 
 const router = express.Router();
 const opPatient = new PatientIm();
@@ -19,6 +20,16 @@ router.get('/get/:id', async (req: Request, res: Response, next: NextFunction) =
   try {
     const id = req.params.id;
     const resBD = await opPatient.get(id);
+    res.json(resBD);
+  } catch (e) {
+    next(e);
+  }
+});
+
+router.post('/login', async (req: Request, res: Response, next: NextFunction) => {
+  try {
+    const credentials: Credentials = req.body;
+    const resBD = await opPatient.login(credentials.user, credentials.password);
     res.json(resBD);
   } catch (e) {
     next(e);
