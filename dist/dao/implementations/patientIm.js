@@ -9,6 +9,7 @@ class PatientIm {
     }
     getAll() {
         return patient_1.Patient.findAll({
+            order: [['createdAt', 'ASC']],
             include: [
                 { model: clinic_history_1.ClinicHistory }
             ]

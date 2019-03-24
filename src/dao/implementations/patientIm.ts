@@ -10,6 +10,7 @@ export class PatientIm {
 
     getAll() {
         return Patient.findAll({
+            order: [['createdAt', 'ASC']],
             include: [
                 { model: ClinicHistory }
             ]
