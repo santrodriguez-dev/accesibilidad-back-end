@@ -1,4 +1,3 @@
-"use strict";
 // import { OperUsuarios } from "../interfaces/OperUsuarios";
 // import { Credenciales, Usuario } from "../../dto/Usuario";
 // import { UsuariosModel } from "../../models/Usuarios";
@@ -18,4 +17,3 @@
 //         });
 //     }
 // }
-//# sourceMappingURL=OperUsuariosIm.js.map

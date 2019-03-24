@@ -1,3 +1,6 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
+// import { Categoria } from "../../dto";
+// export interface OperCategorias {
+//     getAll(): Promise<Categoria[]>;
+//     get(id: number): Promise<Categoria | undefined>;
+// }
 //# sourceMappingURL=OperCategorias.js.map

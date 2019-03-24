@@ -1,4 +1,3 @@
-"use strict";
 // import { Request, Response } from "express";
 // import express from "express";
 // import { OperUsuariosIm } from "../dao/implementaciones/OperUsuariosIm";

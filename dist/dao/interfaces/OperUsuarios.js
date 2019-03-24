@@ -1,3 +1,6 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
+// import { Credenciales, Usuario } from "../../dto/Usuario";
+// import { RespuestaServidor } from "../../dto";
+// export interface OperUsuarios {
+//     login(cred: Credenciales): Promise<RespuestaServidor<Usuario | null>>;
+// }
 //# sourceMappingURL=OperUsuarios.js.map

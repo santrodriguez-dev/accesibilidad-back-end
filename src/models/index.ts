@@ -1,34 +1,35 @@
-import { Sequelize } from "sequelize";
-import productFactory from "./Pacientes";
+import { Op } from 'sequelize';
+import { Sequelize } from 'sequelize-typescript';
+import { Patient } from './patient';
+import { ClinicHistory } from './clinic-history';
+import { Doctor } from './doctor';
+import { MedicalCenter } from './medical-center';
+import { UserAdministrator } from './user-administrator';
+import { DoctorMedicalCenter } from './doctor-medical.center';
+import { MedicalEmergency } from './medical-emergency';
 
-const env = process.env.NODE_ENV || "production";
+
+const env = process.env.NODE_ENV || "development";
 const config = require(__dirname + "./../../config/config.json")[env];
 
-console.log(config);
-
-export const sequelizeBD = new Sequelize(config.database, config.username, config.password, config);
-
-sequelizeBD.authenticate()
-    .then(() => {
-        console.log('Connection has been established successfully.');
-    })
-    .catch(err => {
-        console.error('Unable to connect to the database:', err);
-    });
-
-// export const database = db;
-
-const db = {
-    sequelizeBD,
-    Sequelize,
-    modelTest: productFactory(sequelizeBD),
-    // Product: initProduct(sequelize),
-};
-
-Object.values(db).forEach((model: any) => {
-    if (model.associate) {
-        model.associate(db);
-    }
+export const sequelizeBD = new Sequelize({
+    database: config.database,
+    dialect: config.dialect,
+    operatorsAliases: Op,
+    username: config.username,
+    password: config.password,
+    storage: ':memory:',
+    // modelPaths: [__dirname + '/models']
 });
 
-// export default productFactory(sequelizeBD);
+const models = [
+    Patient,
+    ClinicHistory,
+    Doctor,
+    UserAdministrator,
+    MedicalCenter,
+    DoctorMedicalCenter,
+    MedicalEmergency
+]
+
+sequelizeBD.addModels(models);

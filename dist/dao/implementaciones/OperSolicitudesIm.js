@@ -1,4 +1,3 @@
-"use strict";
 // import { OperSolicitudes } from "../interfaces/OperSolicitudes";
 // import { Solicitud, RespuestaServidor } from "../../dto";
 // import { SolicitudesModel } from "../../models/Solicitudes";
@@ -67,4 +66,3 @@
 //         });
 //     }
 // }
-//# sourceMappingURL=OpersolicitudesIm.js.map

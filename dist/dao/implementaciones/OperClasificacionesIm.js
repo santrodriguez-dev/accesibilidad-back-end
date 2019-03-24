@@ -1,4 +1,3 @@
-"use strict";
 // import { Clasificacion } from "../../dto";
 // import { OperClasificaciones } from "../interfaces/OperClasificaciones";
 // import { ClasificacionesModel } from "../../models/Clasificaciones";
@@ -27,4 +26,3 @@
 //         });
 //     }
 // }
-//# sourceMappingURL=OperClasificacionesIm.js.map

@@ -1,4 +1,3 @@
-"use strict";
 // import { Request, Response } from "express";
 // import express, { NextFunction } from "express";
 // import { OperCategoriasIm } from "../dao/implementaciones";

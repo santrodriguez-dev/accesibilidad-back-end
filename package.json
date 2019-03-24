@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node ./bin/www"
+    "start": "nodemon dist/index.js"
   },
   "dependencies": {
     "cookie-parser": "~1.4.4",
@@ -17,9 +17,11 @@
     "nodemon": "^1.18.10",
     "pg": "^7.9.0",
     "pg-hstore": "^2.3.2",
+    "reflect-metadata": "^0.1.13",
     "rxjs": "^6.4.0",
     "sequelize": "^5.1.0",
     "sequelize-cli": "^5.4.0",
+    "sequelize-typescript": "^1.0.0-alpha.9",
     "socket.io": "^2.2.0"
   },
   "devDependencies": {
