@@ -48,19 +48,9 @@ class Server {
     }
     // start server on port
     start(callback) {
-        this.app.listen(this.port, '0.0.0.0', callback());
+        this.app.listen(process.env.PORT || this.port, callback());
     }
 }
-// (async () => {
-//   await sequelize.sync({ force: true });
-//   createServer(app)
-//     .listen(
-//       port,
-//       () => console.info(`Server running on port ${port}`)
-//     );
-// })();
-// import { Doctor } from './patient';
-// const credentials = config[get('NODE_ENV', 'development')];
 (async () => {
     await models_1.sequelizeBD.sync({ force: false });
     const port = 5000;

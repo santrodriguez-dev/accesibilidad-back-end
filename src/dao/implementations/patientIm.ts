@@ -10,9 +10,9 @@ export class PatientIm {
 
     getAll() {
         return Patient.findAll({
-            order: [['createdAt', 'ASC']],
+            order: [['createdAt', 'DESC']],
             include: [
-                { model: ClinicHistory }
+                { model: ClinicHistory, order: [['createdAt', 'DESC']] }
             ]
         }).then(response => {
             return this.serverResponse.successful(response);
@@ -53,7 +53,7 @@ export class PatientIm {
 
     update(patient: Patient) {
         return Patient.update(patient, { where: { id: patient.id } }).then(response => {
-            if (response.length > 0) {
+            if (response[0] === 0) {
                 return this.serverResponse.throwError('No se ha podido guardar la información');
             }
             return this.serverResponse.successful(true);

@@ -20,6 +20,26 @@ class MedicalCenterIm {
             return this.serverResponse.throwError(err.message);
         });
     }
+    create(medicalEmergency) {
+        return medical_center_1.MedicalCenter.create(medicalEmergency).then(response => {
+            if (!response) {
+                return this.serverResponse.throwError('No se ha podido guardar la información');
+            }
+            return this.serverResponse.successful(response);
+        }).catch(err => {
+            return this.serverResponse.throwError(err.message);
+        });
+    }
+    update(medicalEmergency) {
+        return medical_center_1.MedicalCenter.update(medicalEmergency, { where: { id: medicalEmergency.id } }).then(response => {
+            if (response[0] === 0) {
+                return this.serverResponse.throwError('No se ha podido guardar la información');
+            }
+            return this.serverResponse.successful(true);
+        }).catch(err => {
+            return this.serverResponse.throwError(err.message);
+        });
+    }
     delete(id) {
         return medical_center_1.MedicalCenter.destroy({ where: { id: id } }).then(response => {
             if (response === 0) {

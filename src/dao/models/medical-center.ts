@@ -31,9 +31,9 @@ export class MedicalCenter extends Model<MedicalCenter> {
     @Column
     description: string;
 
-    @Column
-    coordLat: string;
+    @Column(DataType.FLOAT)
+    coordLat: number;
 
-    @Column
-    coordLong: string;
+    @Column(DataType.FLOAT)
+    coordLong: number;
 }

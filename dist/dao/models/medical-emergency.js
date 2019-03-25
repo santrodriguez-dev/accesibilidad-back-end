@@ -77,30 +77,15 @@ __decorate([
     __metadata("design:type", String)
 ], MedicalEmergency.prototype, "address", void 0);
 __decorate([
-    sequelize_typescript_1.Column,
-    __metadata("design:type", String)
+    sequelize_typescript_1.Column(sequelize_typescript_1.DataType.FLOAT),
+    __metadata("design:type", Number)
 ], MedicalEmergency.prototype, "coordLat", void 0);
 __decorate([
-    sequelize_typescript_1.Column,
-    __metadata("design:type", String)
+    sequelize_typescript_1.Column(sequelize_typescript_1.DataType.FLOAT),
+    __metadata("design:type", Number)
 ], MedicalEmergency.prototype, "coordLong", void 0);
 MedicalEmergency = __decorate([
     sequelize_typescript_1.Table({ modelName: 'medical_emergency' })
 ], MedicalEmergency);
 exports.MedicalEmergency = MedicalEmergency;
-// export interface MedicalEmergency {
-//     id: string,
-//     patient_id: string,
-//     doctor_id: string,
-//     medical_center_id: string,
-//     date: string,
-//     priority: string,
-//     state: string,
-//     photo: string,
-//     patient_description: string,
-//     doctor_description: string,
-//     address: string,
-//     coordLat: string,
-//     coordLong: string
-// }
 //# sourceMappingURL=medical-emergency.js.map

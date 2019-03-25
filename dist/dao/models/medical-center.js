@@ -49,12 +49,12 @@ __decorate([
     __metadata("design:type", String)
 ], MedicalCenter.prototype, "description", void 0);
 __decorate([
-    sequelize_typescript_1.Column,
-    __metadata("design:type", String)
+    sequelize_typescript_1.Column(sequelize_typescript_1.DataType.FLOAT),
+    __metadata("design:type", Number)
 ], MedicalCenter.prototype, "coordLat", void 0);
 __decorate([
-    sequelize_typescript_1.Column,
-    __metadata("design:type", String)
+    sequelize_typescript_1.Column(sequelize_typescript_1.DataType.FLOAT),
+    __metadata("design:type", Number)
 ], MedicalCenter.prototype, "coordLong", void 0);
 MedicalCenter = __decorate([
     sequelize_typescript_1.Table({ modelName: 'medical_center' })

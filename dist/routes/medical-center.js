@@ -26,6 +26,22 @@ router.get('/get/:id', async (req, res, next) => {
         next(e);
     }
 });
+router.post('/save', async (req, res, next) => {
+    try {
+        const medicalCenter = req.body;
+        let resBD;
+        if (medicalCenter.id) {
+            resBD = await opMedicalCenter.update(medicalCenter);
+        }
+        else {
+            resBD = await opMedicalCenter.create(medicalCenter);
+        }
+        res.json(resBD);
+    }
+    catch (e) {
+        next(e);
+    }
+});
 router.delete('/delete/:id', async (req, res, next) => {
     try {
         const id = req.params.id;

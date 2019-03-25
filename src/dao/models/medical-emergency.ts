@@ -53,26 +53,9 @@ export class MedicalEmergency extends Model<MedicalEmergency> {
     @Column
     address: string;
 
-    @Column
-    coordLat: string;
+    @Column(DataType.FLOAT)
+    coordLat: number;
 
-    @Column
-    coordLong: string;
+    @Column(DataType.FLOAT)
+    coordLong: number;
 }
-
-
-// export interface MedicalEmergency {
-//     id: string,
-//     patient_id: string,
-//     doctor_id: string,
-//     medical_center_id: string,
-//     date: string,
-//     priority: string,
-//     state: string,
-//     photo: string,
-//     patient_description: string,
-//     doctor_description: string,
-//     address: string,
-//     coordLat: string,
-//     coordLong: string
-// }
