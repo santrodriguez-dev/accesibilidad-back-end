@@ -3,6 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const server_response_1 = require("./server-response");
 const medical_emergency_1 = require("../models/medical-emergency");
 const patient_1 = require("../models/patient");
+const medical_center_1 = require("../models/medical-center");
 class MedicalEmergencyIm {
     constructor() {
         this.serverResponse = new server_response_1.ServerResponse;
@@ -22,7 +23,8 @@ class MedicalEmergencyIm {
     get(id) {
         return medical_emergency_1.MedicalEmergency.findByPk(id, {
             include: [
-                { model: patient_1.Patient }
+                { model: patient_1.Patient },
+                { model: medical_center_1.MedicalCenter },
             ]
         }).then(response => {
             return this.serverResponse.successful(response);

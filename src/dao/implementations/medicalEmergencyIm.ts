@@ -1,6 +1,7 @@
 import { ServerResponse } from "./server-response";
 import { MedicalEmergency } from "../models/medical-emergency";
 import { Patient } from "../models/patient";
+import { MedicalCenter } from "../models/medical-center";
 
 export class MedicalEmergencyIm {
 
@@ -24,7 +25,8 @@ export class MedicalEmergencyIm {
     get(id: number) {
         return MedicalEmergency.findByPk(id, {
             include: [
-                { model: Patient }
+                { model: Patient },
+                { model: MedicalCenter },
             ]
         }).then(response => {
             return this.serverResponse.successful(response);
