@@ -1,9 +1,9 @@
 import express from "express";
-import { registerRoutes } from "./routes";
 import cors from "cors";
 import createError from "http-errors";
 import logger from "morgan";
 import cookieParser from "cookie-parser";
+import { registerRoutes } from "./routes";
 import { sequelizeBD } from "./dao/models";
 
 class Server {
@@ -57,6 +57,23 @@ class Server {
     this.app.listen(process.env.PORT || this.port, callback());
   }
 }
+
+// (async () => {
+//   await sequelize.sync({ force: true });
+
+//   createServer(app)
+//     .listen(
+//       port,
+//       () => console.info(`Server running on port ${port}`)
+//     );
+// })();
+
+// import { Doctor } from './patient';
+
+// const credentials = config[get('NODE_ENV', 'development')];
+
+
+
 
 (async () => {
   await sequelizeBD.sync({ force: false });

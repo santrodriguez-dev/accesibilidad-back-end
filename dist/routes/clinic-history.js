@@ -26,6 +26,16 @@ router.get('/get/:id', async (req, res, next) => {
         next(e);
     }
 });
+router.get('/getByPatientId/:id', async (req, res, next) => {
+    try {
+        const patientId = req.params.id;
+        const resBD = await opClinicHistory.getByPatientId(patientId);
+        res.json(resBD);
+    }
+    catch (e) {
+        next(e);
+    }
+});
 router.post('/save', async (req, res, next) => {
     try {
         const clinicHist = req.body;

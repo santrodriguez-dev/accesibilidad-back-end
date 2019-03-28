@@ -23,6 +23,14 @@ export class ClinicHistoryIm {
         });
     }
 
+    getByPatientId(patient_id: number) {
+        return ClinicHistory.findAll({ where: { patient_id: patient_id } }).then(response => {
+            return this.serverResponse.successful(response);
+        }).catch(err => {
+            return this.serverResponse.throwError(err.message);
+        });
+    }
+
     create(clinicHistory: ClinicHistory) {
         return ClinicHistory.create(clinicHistory).then(response => {
             if (!response) {

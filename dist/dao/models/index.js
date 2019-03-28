@@ -10,13 +10,6 @@ const doctor_medical_center_1 = require("./doctor-medical.center");
 const medical_emergency_1 = require("./medical-emergency");
 const env = process.env.NODE_ENV || "production";
 const config = require(__dirname + "./../../../config/config.json")[env];
-// export const sequelizeBD = new Sequelize({
-//     database: config.database,
-//     dialect: config.dialect,
-//     operatorsAliases: Op,
-//     username: config.username,
-//     password: config.password,
-// });
 exports.sequelizeBD = new sequelize_typescript_1.Sequelize(config.database, config.username, config.password, config);
 const models = [
     patient_1.Patient,

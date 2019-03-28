@@ -4,11 +4,11 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
-const routes_1 = require("./routes");
 const cors_1 = __importDefault(require("cors"));
 const http_errors_1 = __importDefault(require("http-errors"));
 const morgan_1 = __importDefault(require("morgan"));
 const cookie_parser_1 = __importDefault(require("cookie-parser"));
+const routes_1 = require("./routes");
 const models_1 = require("./dao/models");
 class Server {
     // builder
@@ -51,6 +51,16 @@ class Server {
         this.app.listen(process.env.PORT || this.port, callback());
     }
 }
+// (async () => {
+//   await sequelize.sync({ force: true });
+//   createServer(app)
+//     .listen(
+//       port,
+//       () => console.info(`Server running on port ${port}`)
+//     );
+// })();
+// import { Doctor } from './patient';
+// const credentials = config[get('NODE_ENV', 'development')];
 (async () => {
     await models_1.sequelizeBD.sync({ force: false });
     const port = 5000;
