@@ -2,6 +2,7 @@ import { Request, Response } from "express";
 import express, { NextFunction } from "express";
 import { MedicalEmergencyIm } from "../dao/implementations";
 import { MedicalEmergency } from "../dao/models/medical-emergency";
+import { MedicalEmergenciesServer } from "..";
 
 const router = express.Router();
 const opMedicalEmergency = new MedicalEmergencyIm();

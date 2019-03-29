@@ -5,105 +5,79 @@ import logger from "morgan";
 import cookieParser from "cookie-parser";
 import { registerRoutes } from "./routes";
 import { sequelizeBD } from "./dao/models";
-import * as socketio from "socket.io";
+import socketIo from 'socket.io';
 
-class Server {
-  // propierties
-  public app: express.Express;
+import { createServer, Server } from 'http';
 
-  // builder
-  constructor(private port: number) {
+export class MedicalEmergenciesServer {
+  public static readonly PORT: number = 5000;
+  private app: express.Application;
+  private server: Server;
+  public io: SocketIO.Server;
+  private port: string | number;
+
+  constructor() {
+    this.createApp();
+    this.config();
+    this.createServer();
+    this.sockets();
+    this.listen();
+  }
+
+  private createApp() {
     this.app = express();
+    this.app.use(cors());
     this.app.use(logger('dev'));
     this.app.use(cookieParser());
     this.app.use(express.json());
-    this.app.use(cors());
-    // this.app.use((req, res, next) => {
-    //   res.header("Access-Control-Allow-Origin", "*");
-    //   res.header("Access-Control-Expose-Headers", "x-total-count");
-    //   res.header("Access-Control-Allow-Methods", "GET,PUT,POST,DELETE,PATCH");
-    //   res.header("Access-Control-Allow-Headers", "Content-Type,authorization");
-
-    //   next();
-    // });
-
-    // this.app.use('/movies', (req: Request, res: Response, next: NextFunction) => {
-    //   // socketNuevaSolicitud.emit('new_message', {
-    //   //   msj: "Mensaje del socket listener 333",
-    //   //   status: "Correcto"
-    //   // });
-    //   res.send({ hola: 'hola' });
-
-    //   // res.sendfile(path.join(__dirname, '..', 'views', 'index.html'));
-    // });
-    // this.app.use('/actors', actors);
-
-    // Registe urls app
-
     registerRoutes(this.app);
+    this.app.use('/movies', (req: any, res: any, next: any) => {
 
-    // catch 404 and forward to error handler
-    this.app.use(function (req, res, next) {
-      next(createError(404));
+      this.io.emit('message', 'Hola mundo')
+      res.send({ hola: 'hola' });
+
+    });
+  }
+
+  private createServer(): void {
+    this.server = createServer(this.app);
+  }
+
+  private config(): void {
+    this.port = process.env.PORT || MedicalEmergenciesServer.PORT;
+  }
+
+  private sockets(): void {
+    this.io = socketIo(this.server);
+  }
+
+  private listen(): void {
+    this.server.listen(this.port, () => {
+      console.log('Running server on port %s', this.port);
     });
 
-    // // intance swagger
-    // try {
-    //   const swaggerDocumnet = require("../../swagger.json");
-    //   this.app.use("/docs", swaggerUi.serve, swaggerUi.setup(swaggerDocumnet));
-    // } catch (err) {
-    //   console.log(err);
-    // }
+    this.io.on('connect', (socket: any) => {
+      console.log('Connected client on port %s.', this.port);
+
+      socket.on('message', (m: any) => {
+        console.log('[server](message): %s', JSON.stringify(m));
+        this.io.emit('message', m);
+      });
+
+      socket.on('disconnect', () => {
+        console.log('Client disconnected');
+      });
+    });
   }
 
-  // init server
-  static init(port: number): Server {
-    return new Server(port);
-  }
-
-  // start server on port
-  start(callback: Function) {
-    this.app.listen(process.env.PORT || this.port, callback());
+  public getApp(): express.Application {
+    return this.app;
   }
 }
 
-// (async () => {
-//   await sequelize.sync({ force: true });
-
-//   createServer(app)
-//     .listen(
-//       port,
-//       () => console.info(`Server running on port ${port}`)
-//     );
-// })();
-
-// import { Doctor } from './patient';
-
-// const credentials = config[get('NODE_ENV', 'development')];
-
-
-
-
-(async () => {
-  await sequelizeBD.sync({ force: false });
-
-  const port = 5000;
-
-  // instance server
-  const server = Server.init(port);
-
-
-  // let io = require("socket.io")(server);
-  // io.on("connection", function (socket: any) {
-  //   console.log("a user connected");
-  //   // whenever we receive a 'message' we log it out
-  //   socket.on("message", function (message: any) {
-  //     console.log(message);
-  //   });
-  // });
-
-  // run server
-  server.start(() => console.log("Server started on port: " + port));
-
-  // createServer(app).listen(port, () => console.info(`Server running on port ${port}`));
-})();
+sequelizeBD.sync({ force: false }).then(() => {
+  const app = new MedicalEmergenciesServer();
+  app.getApp;
+}).catch(err => {
+  console.log('err');
+});

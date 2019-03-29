@@ -60,7 +60,7 @@ import * as medicalCenterRouter from "./medical-center";
 import * as medicalEmergencyRouter from "./medical-emergency";
 import * as userAdminRouter from "./user-admin";
 
-export function registerRoutes(app: express.Express) {
+export function registerRoutes(app: express.Application) {
   app.use('/patient', patientRouter.routes);
   app.use('/clinic-history', clinicHistoryRouter.routes);
   app.use('/medical-center', medicalCenterRouter.routes);

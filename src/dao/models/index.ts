@@ -1,4 +1,3 @@
-import { Op } from 'sequelize';
 import { Sequelize } from 'sequelize-typescript';
 import { Patient } from './patient';
 import { ClinicHistory } from './clinic-history';
