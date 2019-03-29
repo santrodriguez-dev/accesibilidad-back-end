@@ -5,6 +5,7 @@ import logger from "morgan";
 import cookieParser from "cookie-parser";
 import { registerRoutes } from "./routes";
 import { sequelizeBD } from "./dao/models";
+import * as socketio from "socket.io";
 
 class Server {
   // propierties
@@ -13,10 +14,18 @@ class Server {
   // builder
   constructor(private port: number) {
     this.app = express();
-    this.app.use(cors());
     this.app.use(logger('dev'));
     this.app.use(cookieParser());
     this.app.use(express.json());
+    this.app.use(cors());
+    // this.app.use((req, res, next) => {
+    //   res.header("Access-Control-Allow-Origin", "*");
+    //   res.header("Access-Control-Expose-Headers", "x-total-count");
+    //   res.header("Access-Control-Allow-Methods", "GET,PUT,POST,DELETE,PATCH");
+    //   res.header("Access-Control-Allow-Headers", "Content-Type,authorization");
+
+    //   next();
+    // });
 
     // this.app.use('/movies', (req: Request, res: Response, next: NextFunction) => {
     //   // socketNuevaSolicitud.emit('new_message', {
@@ -82,6 +91,17 @@ class Server {
 
   // instance server
   const server = Server.init(port);
+
+
+  // let io = require("socket.io")(server);
+  // io.on("connection", function (socket: any) {
+  //   console.log("a user connected");
+  //   // whenever we receive a 'message' we log it out
+  //   socket.on("message", function (message: any) {
+  //     console.log(message);
+  //   });
+  // });
+
   // run server
   server.start(() => console.log("Server started on port: " + port));
 

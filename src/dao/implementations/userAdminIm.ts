@@ -34,6 +34,17 @@ export class UserAdminIm {
         });
     }
 
+    save(userAdministrator: UserAdministrator) {
+        return UserAdministrator.create(userAdministrator).then(response => {
+            if (!response) {
+                return this.serverResponse.throwError('No se ha podido crear');
+            }
+            return this.serverResponse.successful(response);
+        }).catch(err => {
+            return this.serverResponse.throwError(err.message);
+        });
+    }
+
     // private pacientes = CommentFactory(null, null);
 
     // obtenerPacientesConSolicitudes(): Promise<RespuestaServidor<Paciente[]>> {

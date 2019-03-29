@@ -30,6 +30,16 @@ class UserAdminIm {
             return this.serverResponse.throwError(err.message);
         });
     }
+    save(userAdministrator) {
+        return user_administrator_1.UserAdministrator.create(userAdministrator).then(response => {
+            if (!response) {
+                return this.serverResponse.throwError('No se ha podido crear');
+            }
+            return this.serverResponse.successful(response);
+        }).catch(err => {
+            return this.serverResponse.throwError(err.message);
+        });
+    }
 }
 exports.UserAdminIm = UserAdminIm;
 //# sourceMappingURL=userAdminIm.js.map
