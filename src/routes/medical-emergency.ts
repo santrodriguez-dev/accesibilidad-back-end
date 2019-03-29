@@ -43,7 +43,8 @@ router.post('/save', async (req: Request, res: Response, next: NextFunction) => 
     if (medicalEm.id) {
       resBD = await opMedicalEmergency.update(medicalEm);
     } else {
-      resBD = await opMedicalEmergency.create(medicalEm);
+      const io = req.app.get('socketio');
+      resBD = await opMedicalEmergency.create(medicalEm, io);
     }
     res.json(resBD);
   } catch (e) {

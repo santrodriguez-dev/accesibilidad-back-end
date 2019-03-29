@@ -39,7 +39,7 @@ class MedicalEmergencyIm {
             return this.serverResponse.throwError(err.message);
         });
     }
-    create(medicalEmergency) {
+    create(medicalEmergency, io) {
         return medical_emergency_1.MedicalEmergency.create(medicalEmergency, {
             include: [
                 { model: patient_1.Patient }
@@ -48,6 +48,7 @@ class MedicalEmergencyIm {
             if (!response) {
                 return this.serverResponse.throwError('No se ha podido guardar la información');
             }
+            io.emit('medicalEmergencyCreated', response);
             return this.serverResponse.successful(response);
         }).catch(err => {
             return this.serverResponse.throwError(err.message);

@@ -26,10 +26,6 @@ class MedicalEmergenciesServer {
         this.app.use(cookie_parser_1.default());
         this.app.use(express_1.default.json());
         routes_1.registerRoutes(this.app);
-        this.app.use('/movies', (req, res, next) => {
-            this.io.emit('message', 'Hola mundo');
-            res.send({ hola: 'hola' });
-        });
     }
     createServer() {
         this.server = http_1.createServer(this.app);
@@ -39,6 +35,7 @@ class MedicalEmergenciesServer {
     }
     sockets() {
         this.io = socket_io_1.default(this.server);
+        this.app.set('socketio', this.io);
     }
     listen() {
         this.server.listen(this.port, () => {
@@ -46,10 +43,10 @@ class MedicalEmergenciesServer {
         });
         this.io.on('connect', (socket) => {
             console.log('Connected client on port %s.', this.port);
-            socket.on('message', (m) => {
-                console.log('[server](message): %s', JSON.stringify(m));
-                this.io.emit('message', m);
-            });
+            // socket.on('message', (m: any) => {
+            //   console.log('[server](message): %s', JSON.stringify(m));
+            //   this.io.emit('message', m);
+            // });
             socket.on('disconnect', () => {
                 console.log('Client disconnected');
             });
@@ -63,7 +60,7 @@ MedicalEmergenciesServer.PORT = 5000;
 exports.MedicalEmergenciesServer = MedicalEmergenciesServer;
 models_1.sequelizeBD.sync({ force: false }).then(() => {
     const app = new MedicalEmergenciesServer();
-    app.getApp;
+    app.getApp();
 }).catch(err => {
     console.log('err');
 });
