@@ -24,6 +24,7 @@ export class MedicalEmergencyIm {
 
     get(id: number) {
         return MedicalEmergency.findByPk(id, {
+            order: [['createdAt', 'DESC']],
             include: [
                 { model: Patient },
                 { model: MedicalCenter },
