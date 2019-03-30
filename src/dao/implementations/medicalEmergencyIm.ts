@@ -38,7 +38,10 @@ export class MedicalEmergencyIm {
     getByPatientId(patientId: number) {
         return MedicalEmergency.findAll({
             order: [['createdAt', 'DESC']],
-            where: { patient_id: patientId }
+            where: { patient_id: patientId },
+            include: [
+                { model: MedicalCenter },
+            ]
         }).then(response => {
             return this.serverResponse.successful(response);
         }).catch(err => {
