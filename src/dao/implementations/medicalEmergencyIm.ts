@@ -24,7 +24,6 @@ export class MedicalEmergencyIm {
 
     get(id: number) {
         return MedicalEmergency.findByPk(id, {
-            order: [['createdAt', 'DESC']],
             include: [
                 { model: Patient },
                 { model: MedicalCenter },
@@ -37,7 +36,10 @@ export class MedicalEmergencyIm {
     }
 
     getByPatientId(patientId: number) {
-        return MedicalEmergency.findAll({ where: { patient_id: patientId } }).then(response => {
+        return MedicalEmergency.findAll({
+            order: [['createdAt', 'DESC']],
+            where: { patient_id: patientId }
+        }).then(response => {
             return this.serverResponse.successful(response);
         }).catch(err => {
             return this.serverResponse.throwError(err.message);
