@@ -42,8 +42,9 @@ export class MedicalEmergency extends Model<MedicalEmergency> {
     @Column
     state: string;
 
-    @Column
+    @Column(DataType.TEXT)
     photo: string;
+
     @Column
     patient_description: string;
 
