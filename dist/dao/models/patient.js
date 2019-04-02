@@ -62,6 +62,10 @@ __decorate([
     sequelize_typescript_1.Column,
     __metadata("design:type", String)
 ], Patient.prototype, "photo", void 0);
+__decorate([
+    sequelize_typescript_1.Column,
+    __metadata("design:type", Boolean)
+], Patient.prototype, "isLoggedIn", void 0);
 Patient = __decorate([
     sequelize_typescript_1.Table({ modelName: 'patient' })
 ], Patient);

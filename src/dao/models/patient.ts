@@ -41,4 +41,7 @@ export class Patient extends Model<Patient> {
 
     @Column
     photo: string;
+
+    @Column
+    isLoggedIn: boolean;
 }

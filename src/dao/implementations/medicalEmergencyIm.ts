@@ -50,14 +50,20 @@ export class MedicalEmergencyIm {
     }
 
     getByPatientId(patientId: number) {
-        return MedicalEmergency.findAll({ where: { patient_id: patientId } }).then(response => {
+        return MedicalEmergency.findAll({
+            order: [['createdAt', 'DESC']],
+            where: { patient_id: patientId },
+            include: [
+                { model: MedicalCenter },
+            ]
+        }).then(response => {
             return this.serverResponse.successful(response);
         }).catch(err => {
             return this.serverResponse.throwError(err.message);
         });
     }
 
-    create(medicalEmergency: MedicalEmergency) {
+    create(medicalEmergency: MedicalEmergency, io: SocketIO.Server) {
         return MedicalEmergency.create(medicalEmergency, {
             include: [
                 { model: Patient }
@@ -66,6 +72,7 @@ export class MedicalEmergencyIm {
             if (!response) {
                 return this.serverResponse.throwError('No se ha podido guardar la información');
             }
+            io.emit('medicalEmergencyCreated', response)
             return this.serverResponse.successful(response);
         }).catch(err => {
             return this.serverResponse.throwError(err.message);

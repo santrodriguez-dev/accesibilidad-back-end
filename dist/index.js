@@ -5,16 +5,23 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const cors_1 = __importDefault(require("cors"));
-const http_errors_1 = __importDefault(require("http-errors"));
 const morgan_1 = __importDefault(require("morgan"));
 const cookie_parser_1 = __importDefault(require("cookie-parser"));
 const routes_1 = require("./routes");
 const models_1 = require("./dao/models");
-class Server {
-    // builder
-    constructor(port) {
-        this.port = port;
+const socket_io_1 = __importDefault(require("socket.io"));
+const http_1 = require("http");
+class MedicalEmergenciesServer {
+    constructor() {
+        this.createApp();
+        this.config();
+        this.createServer();
+        this.sockets();
+        this.listen();
+    }
+    createApp() {
         this.app = express_1.default();
+        this.app.use(cors_1.default());
         this.app.use(morgan_1.default('dev'));
         this.app.use(cookie_parser_1.default());
         this.app.use(express_1.default.json());
@@ -37,25 +44,12 @@ class Server {
         // this.app.use('/actors', actors);
         // Registe urls app
         routes_1.registerRoutes(this.app);
-        // catch 404 and forward to error handler
-        this.app.use(function (req, res, next) {
-            next(http_errors_1.default(404));
-        });
-        // // intance swagger
-        // try {
-        //   const swaggerDocumnet = require("../../swagger.json");
-        //   this.app.use("/docs", swaggerUi.serve, swaggerUi.setup(swaggerDocumnet));
-        // } catch (err) {
-        //   console.log(err);
-        // }
     }
-    // init server
-    static init(port) {
-        return new Server(port);
+    createServer() {
+        this.server = http_1.createServer(this.app);
     }
-    // start server on port
-    start(callback) {
-        this.app.listen(process.env.PORT || this.port, callback());
+    config() {
+        this.port = process.env.PORT || MedicalEmergenciesServer.PORT;
     }
 }
 // (async () => {

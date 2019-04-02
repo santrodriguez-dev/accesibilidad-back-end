@@ -61,7 +61,7 @@ __decorate([
     __metadata("design:type", String)
 ], MedicalEmergency.prototype, "state", void 0);
 __decorate([
-    sequelize_typescript_1.Column,
+    sequelize_typescript_1.Column(sequelize_typescript_1.DataType.TEXT),
     __metadata("design:type", String)
 ], MedicalEmergency.prototype, "photo", void 0);
 __decorate([

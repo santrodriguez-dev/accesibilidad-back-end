@@ -46,13 +46,19 @@ class MedicalEmergencyIm {
         });
     }
     getByPatientId(patientId) {
-        return medical_emergency_1.MedicalEmergency.findAll({ where: { patient_id: patientId } }).then(response => {
+        return medical_emergency_1.MedicalEmergency.findAll({
+            order: [['createdAt', 'DESC']],
+            where: { patient_id: patientId },
+            include: [
+                { model: medical_center_1.MedicalCenter },
+            ]
+        }).then(response => {
             return this.serverResponse.successful(response);
         }).catch(err => {
             return this.serverResponse.throwError(err.message);
         });
     }
-    create(medicalEmergency) {
+    create(medicalEmergency, io) {
         return medical_emergency_1.MedicalEmergency.create(medicalEmergency, {
             include: [
                 { model: patient_1.Patient }
@@ -61,6 +67,7 @@ class MedicalEmergencyIm {
             if (!response) {
                 return this.serverResponse.throwError('No se ha podido guardar la información');
             }
+            io.emit('medicalEmergencyCreated', response);
             return this.serverResponse.successful(response);
         }).catch(err => {
             return this.serverResponse.throwError(err.message);
