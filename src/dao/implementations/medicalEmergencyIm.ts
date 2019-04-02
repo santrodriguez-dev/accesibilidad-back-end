@@ -35,6 +35,20 @@ export class MedicalEmergencyIm {
         });
     }
 
+    getByMedicalCenter(medicalCenterId: number) {
+        return MedicalEmergency.findAll({
+            where: { medical_center_id: medicalCenterId },
+            include: [
+                { model: Patient },
+            ],
+            order: [['createdAt', 'DESC']]
+        }).then(response => {
+            return this.serverResponse.successful(response);
+        }).catch(err => {
+            return this.serverResponse.throwError(err.message);
+        });
+    }
+
     getByPatientId(patientId: number) {
         return MedicalEmergency.findAll({ where: { patient_id: patientId } }).then(response => {
             return this.serverResponse.successful(response);

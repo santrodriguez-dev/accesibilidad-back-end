@@ -19,13 +19,13 @@ class Server {
         this.app.use(cookie_parser_1.default());
         this.app.use(express_1.default.json());
         this.app.use(cors_1.default());
-        this.app.use((req, res, next) => {
-            res.header("Access-Control-Allow-Origin", "*");
-            res.header("Access-Control-Expose-Headers", "x-total-count");
-            res.header("Access-Control-Allow-Methods", "GET,PUT,POST,DELETE,PATCH");
-            res.header("Access-Control-Allow-Headers", "Content-Type,authorization");
-            next();
-        });
+        // this.app.use((req, res, next) => {
+        //   res.header("Access-Control-Allow-Origin", "*");
+        //   res.header("Access-Control-Expose-Headers", "x-total-count");
+        //   res.header("Access-Control-Allow-Methods", "GET,PUT,POST,DELETE,PATCH");
+        //   res.header("Access-Control-Allow-Headers", "Content-Type,authorization");
+        //   next();
+        // });
         // this.app.use('/movies', (req: Request, res: Response, next: NextFunction) => {
         //   // socketNuevaSolicitud.emit('new_message', {
         //   //   msj: "Mensaje del socket listener 333",
@@ -73,14 +73,14 @@ class Server {
     const port = 5000;
     // instance server
     const server = Server.init(port);
-    let io = require("socket.io")(server);
-    io.on("connection", function (socket) {
-        console.log("a user connected");
-        // whenever we receive a 'message' we log it out
-        socket.on("message", function (message) {
-            console.log(message);
-        });
-    });
+    // let io = require("socket.io")(server);
+    // io.on("connection", function (socket: any) {
+    //   console.log("a user connected");
+    //   // whenever we receive a 'message' we log it out
+    //   socket.on("message", function (message: any) {
+    //     console.log(message);
+    //   });
+    // });
     // run server
     server.start(() => console.log("Server started on port: " + port));
     // createServer(app).listen(port, () => console.info(`Server running on port ${port}`));
