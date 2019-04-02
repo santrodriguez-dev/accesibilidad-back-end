@@ -11,12 +11,17 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const sequelize_typescript_1 = require("sequelize-typescript");
 const doctor_medical_center_1 = require("./doctor-medical.center");
+const medical_emergency_1 = require("./medical-emergency");
 let MedicalCenter = class MedicalCenter extends sequelize_typescript_1.Model {
 };
 __decorate([
     sequelize_typescript_1.HasMany(() => doctor_medical_center_1.DoctorMedicalCenter),
     __metadata("design:type", Array)
 ], MedicalCenter.prototype, "doctorMedicalCenters", void 0);
+__decorate([
+    sequelize_typescript_1.HasMany(() => medical_emergency_1.MedicalEmergency),
+    __metadata("design:type", Array)
+], MedicalCenter.prototype, "medicalEmergencies", void 0);
 __decorate([
     sequelize_typescript_1.AllowNull(false),
     sequelize_typescript_1.AutoIncrement,

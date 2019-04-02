@@ -26,6 +26,16 @@ router.get('/get/:id', async (req, res, next) => {
         next(e);
     }
 });
+router.get('/getWithEmergencies/:id', async (req, res, next) => {
+    try {
+        const id = req.params.id;
+        const resBD = await opMedicalCenter.getWithEmergencies(id);
+        res.json(resBD);
+    }
+    catch (e) {
+        next(e);
+    }
+});
 router.post('/save', async (req, res, next) => {
     try {
         const medicalCenter = req.body;

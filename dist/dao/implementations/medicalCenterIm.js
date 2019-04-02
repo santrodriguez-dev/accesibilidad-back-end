@@ -2,6 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const server_response_1 = require("./server-response");
 const medical_center_1 = require("../models/medical-center");
+const medical_emergency_1 = require("../models/medical-emergency");
 class MedicalCenterIm {
     constructor() {
         this.serverResponse = new server_response_1.ServerResponse;
@@ -15,6 +16,17 @@ class MedicalCenterIm {
     }
     get(id) {
         return medical_center_1.MedicalCenter.findByPk(id).then(response => {
+            return this.serverResponse.successful(response);
+        }).catch(err => {
+            return this.serverResponse.throwError(err.message);
+        });
+    }
+    getWithEmergencies(id) {
+        return medical_center_1.MedicalCenter.findByPk(id, {
+            include: [
+                { model: medical_emergency_1.MedicalEmergency },
+            ]
+        }).then(response => {
             return this.serverResponse.successful(response);
         }).catch(err => {
             return this.serverResponse.throwError(err.message);
